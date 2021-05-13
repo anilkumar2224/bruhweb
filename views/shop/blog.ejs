@@ -1,0 +1,86 @@
+<%- include ../partials/header %>
+
+<div class="container-fluid">
+  <!-- Flash messages -->
+  <% if(successMsg || errorMsg) {%>
+  <div class="row mt-3 mb-3">
+    <div class="col-md-12 m-auto">
+      <% if (successMsg) { %>
+      <div id="success" class="alert alert-success"><%= successMsg %></div>
+      <% } else { %>
+      <div id="success" class="alert alert-success d-none"></div>
+      <% } %>
+    </div>
+    <div class="col-md-12 m-auto">
+      <% if (errorMsg) { %>
+      <div id="error" class="alert alert-danger"><%= errorMsg %></div>
+      <% } else { %>
+      <div id="error" class="alert alert-danger d-none"></div>
+      <% } %>
+    </div>
+  </div>
+  <% } %>
+
+  <!-- Blog Design-->
+
+  <h1 class="mb-6 mt-5 sign_h"><%=pageName%></h1>
+  <hr class="line" />
+
+  <div class="blog-blogs-menu">
+    <a class="dropdown-item" href="/blog">All Blogs</a>
+    <a class="dropdown-item" href="/blog/skin">Skin</a>
+    <a class="dropdown-item" href="/blog/hair">Hair</a>
+    <a class="dropdown-item" href="/blog/body">Body</a>
+  </div>
+
+  <% blog.forEach((blog) => { %>
+  <section class="blogs">
+    <article class="blog">
+      <input type="checkbox" id="read_more" role="button" />
+      <label for="read_more" onclick=""
+        ><span>Read More</span><span>Read Less</span></label
+      >
+
+      <figure>
+        <img src="<%= blog.imagePath %>" alt="Image" />
+      </figure>
+
+      <section>
+        <p class="preview"><%=blog.preview%></p>
+      </section>
+
+      <section>
+        <p><%=blog.description%></p>
+      </section>
+    </article>
+    ​
+  </section>
+
+  <% }) %>
+</div>
+<script>
+  const pageName = document.getElementsByClassName("sign_h")[0].innerText;
+  switch (pageName) {
+    case "Skin":
+      document.getElementsByClassName(
+        "blog-blogs-menu"
+      )[0].children[1].style.color = "#d7a449";
+      break;
+    case "Hair":
+      document.getElementsByClassName(
+        "blog-blogs-menu"
+      )[0].children[2].style.color = "#d7a449";
+      break;
+    case "Body":
+      document.getElementsByClassName(
+        "blog-blogs-menu"
+      )[0].children[3].style.color = "#d7a449";
+      break;
+    default:
+      document.getElementsByClassName(
+        "blog-blogs-menu"
+      )[0].firstElementChild.style.color = "#d7a449";
+      break;
+  }
+</script>
+<%- include ../partials/footer %>

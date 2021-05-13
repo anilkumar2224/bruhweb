@@ -1,0 +1,195 @@
+<%- include ../partials/header %>
+ <div class="container-fluid">
+
+      <!------Flash Message---->
+      <div class="row mt-3 mb-3">
+        <div class="col-md-12 m-auto">
+          <% if (successMsg) { %>
+          <div id="success" class="alert alert-success">
+            <%= successMsg %>
+          </div>
+          <% } else { %>
+          <div id="success" class="alert alert-success d-none"></div>
+          <% } %>
+        </div>
+        <div class="col-md-12 m-auto">
+          <% if (errorMsg) { %>
+          <div id="error" class="alert alert-danger">
+            <%= errorMsg %>
+          </div>
+          <% } else { %>
+          <div id="error" class="alert alert-danger d-none"></div>
+          <% } %>
+        </div>
+      </div>
+
+
+
+      <!---- Product Info ------->
+
+
+
+        
+        <div class="cart">
+            <div class="row row1">
+                <div class="col-md-4">
+                    <img class="product-img" src="<%=product.imagePath%>" width="100%" id="ProductImg">              
+                </div>
+                <div class="col-md-6">
+                    <h1 class="product-title"><%=product.title%></h1>
+                    <div class="reviews">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <i class="far fa-star"></i>
+                        <p>240 reviews</p>
+                    </div>
+                    <div class="product_price">
+                        <span>INR ₹<%=product.price%></span>
+                    </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                            <h5>Category</h5>
+                            <h6><%=product.category.title%></h6>
+                           
+                        </div>
+                        <div class="col-md-6">
+                            <h5>Brand</h5>
+                            <h6><%=product.manufacturer%></h6>
+                           
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <% if(product.available) {%>
+                                <p class="is-available text-center mb-5">In stock</p>
+                                <a href="/add-to-cart/<%=product._id%>" class="custom-btn">Add To Cart <i class="fas fa-angle-right"></i></a>
+                                <% } else { %>
+                                <p class="is-not-available text-center">Sold out</p>
+                                <%} %>
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+     <div class="row pincode">
+           <div class="col-md-6">
+                  <h6 class="check_txt">Enter your Pin Code to Check for Delivery : </h6>
+           </div>
+
+           <div class="col-md-6">
+            <input id="zip" name="zipCode" placeholder="  " type="text"> 
+            <button type="button" id="checkPin">Check</button><br>
+            <p id="statusResult1" style="color:green;"></p>
+            <p id="statusResult2" style="color:red;"></p>
+           </div>
+          
+
+
+        </div>
+    
+
+    <div class="container-fluid">
+        <div class="cart">
+
+          <div class="row">
+               
+               <div class="col-md-6">
+                    <h2 class="desc_title">Description</h2> 
+                    <hr>    
+                    <p><%=product.description%></p>        
+               </div>
+               <div class="col-md-6">
+                    <h2 class="specific_title">Specifications</h2>
+                    <hr>
+                    <div class="row">
+
+                        <div class="col-md-6 pb-2">
+                            <h5>Type</h5>
+                            <h6><%=product.specific_type%></h6>
+                           
+                        </div>
+                        <div class="col-md-6 pb-2">
+                            <h5>Ingredients</h5>
+                            <h6><%=product.specific_ingredients%></h6>
+                           
+                        </div>
+                        <div class="col-md-6 pb-2">
+                            <h5>Quantity</h5>
+                            <h6><%=product.specific_quantity%></h6>
+                           
+                        </div>
+                        <div class="col-md-6 pb-2">
+                            <h5>Manuf. Date</h5>
+                            <h6><%=product.specific_date%></h6>
+                           
+                        </div>
+                        <div class="col-md-6 pb-2">
+                            <h5>Expiry Date</h5>
+                            <h6><%=product.specific_expiry_date%></h6>
+                           
+                        </div>
+                    </div>              
+               </div>
+
+          </div>
+           
+        </div>
+    </div>
+
+
+     <div class="container-fluid">
+        <div class="cart">
+
+          <div class="row">
+               <h3 class="how_to_use_title">How To Use ?</h3>
+               <hr>
+               <div class="col-md-12 how_content">
+                   <h5 class="how">1. <%=product.description_use_first%></h5>       
+               </div>
+               <div class="col-md-12 how_content">
+                   <h5 class="how">2. <%=product.description_use_second%></h5>       
+               </div>
+               <div class="col-md-12">
+                   <h5 class="how">3. <%=product.description_use_third%></h5>       
+               </div>
+          </div> 
+        </div>
+    </div>
+
+
+
+    <h3 class="customer_reviews">Customer Reviews</h3>
+    <hr class="line">
+ 
+    <div id="wpac-comment"></div>
+    <script type="text/javascript">
+    wpac_init = window.wpac_init || [];
+    wpac_init.push({widget: 'Comment', id: 30295});
+    (function() {
+        if ('WIDGETPACK_LOADED' in window) return;
+        WIDGETPACK_LOADED = true;
+        var mc = document.createElement('script');
+        mc.type = 'text/javascript';
+        mc.async = true;
+        mc.src = 'https://embed.widgetpack.com/widget.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+    })();
+    </script>
+
+
+
+
+
+
+
+
+
+<%- include ../partials/footer %>
