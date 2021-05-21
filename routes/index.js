@@ -6,9 +6,33 @@ const Category = require("../models/category");
 const Cart = require("../models/cart");
 const Order = require("../models/order");
 const middleware = require("../middleware");
+const e = require("express");
 const router = express.Router();
 
 const csrfProtection = csrf();
+router.post("/postdata",async(req,res)=>{
+  console.log(req.body.ids);
+  if(req.body.ids===''){
+    // res.render("shop/wishlist",{
+    //   pageName: "Wish List",
+    //   products:[]
+    //   }
+    //   );
+
+  }else{
+  const productIds=req.body.ids.split(',');
+   var products=await Product.find().where('_id').in(productIds).exec();
+
+  console.log("pampincheproducts",products);
+  res.render("shop/wishlist",{
+  pageName: "Wish List",
+  products
+  }
+  );
+  res.end();
+}
+})
+
 router.use(csrfProtection);
 
 // GET: home page
@@ -17,12 +41,13 @@ router.get("/", async (req, res) => {
     const products = await Product.find({})
       .sort("-createdAt")
       .populate("category");
-    res.render("shop/home", { pageName: "Home", products });
+    res.render("shop/homebody", { pageName: "Home", products });
   } catch (error) {
     console.log(error);
     res.redirect("/");
   }
 });
+
 
 // GET: add a product to the shopping cart when "Add to cart" button is pressed
 router.get("/add-to-cart/:id", async (req, res) => {
@@ -87,6 +112,7 @@ router.get("/shopping-cart", async (req, res) => {
     // find the cart, whether in session or in db based on the user state
     let cart_user;
     if (req.user) {
+     
       cart_user = await Cart.findOne({ user: req.user._id });
     }
     // if user is signed in and has cart, load user's cart from the db
@@ -98,6 +124,7 @@ router.get("/shopping-cart", async (req, res) => {
         products: await productsFromCart(cart_user),
       });
     }
+    
     // if there is no cart in session and user is not logged in, cart is empty
     if (!req.session.cart) {
       return res.render("shop/shopping-cart", {
@@ -156,6 +183,7 @@ router.get("/reduce/:id", async function (req, res, next) {
         await Cart.findByIdAndRemove(cart._id);
       }
     }
+    console.log("abbo",req.headers.referer);
     res.redirect(req.headers.referer);
   } catch (err) {
     console.log(err.message);
@@ -260,6 +288,26 @@ router.post("/checkout", middleware.isLoggedIn, async (req, res) => {
     }
   );
 });
+//GET :wishlist
+router.get("/wishlist",async(req, res) => {
+  const products = await Product.find({})
+      .sort("-createdAt")
+      .populate("category");
+
+    const productId='608e3afba5f4c4617cdb2b1d';
+      const product = await Product.findById(productId);
+  console.log("hipro",product);
+  // console.log(products);
+  res.render("shop/wishlist",  {  
+  pageName: "WishList",
+  products
+  }
+  );
+});
+
+
+
+
 
 // create products array to store the info of each product in the cart
 async function productsFromCart(cart) {
@@ -274,5 +322,8 @@ async function productsFromCart(cart) {
   }
   return products;
 }
+
+
+
 
 module.exports = router;

@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
+
+
+  
+    <!------ Include the above in your HEAD tag ---------->
+    
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800&display=swap" rel="stylesheet">
+    
+
+      <link rel="stylesheet" href="/stylesheets/singlepage.css">
+
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css" integrity="sha384-wESLQ85D6gbsF459vf1CiZ2+rr+CsxRY0RpiF1tLlQpDnAgg6rwdsUF1+Ics2bni" crossorigin="anonymous">
+
     <% if (pageName) { %>
     <title>Bruh | <%= pageName %></title>
     <%} else {%>
@@ -11,7 +23,7 @@
       integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
       crossorigin="anonymous"
     ></script>
-
+  
     <script
       src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
       integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
@@ -46,6 +58,8 @@
     
     <link rel="stylesheet" href="/stylesheets/util.css" />
   
+    <link rel="stylesheet" href="/stylesheets/product.css" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Mapbox -->
@@ -54,6 +68,44 @@
       href="https://api.mapbox.com/mapbox-gl-js/v1.10.0/mapbox-gl.css"
       rel="stylesheet"
     />
+    <script>
+    
+  function addwishlist(e){
+  
+  var likeditems=(localStorage.getItem('bruhwishitems'));
+  if(likeditems!==null&&likeditems.split(",").includes(e)){
+    var updatedarray=  likeditems.split(",").filter(ele=>{
+          if(ele!==e){
+              return ele;
+          }else{
+              document.getElementById(`love${ele}`).classList.remove('blueheart');
+          }
+      });
+      localStorage.setItem('bruhwishitems',updatedarray);
+      if(updatedarray.length==0){
+          document.getElementById('dot').style.opacity='0';
+          localStorage.removeItem('bruhwishitems');
+      }
+   
+      
+  }else{
+  console.log(likeditems);
+  document.getElementById('dot').style.opacity='1';
+  var wishitems=[e];
+  
+  document.getElementById(`love${e}`).classList.add('blueheart');
+  if(likeditems!==null){
+       wishitems=wishitems.concat(likeditems);
+  }
+  
+  localStorage.setItem('bruhwishitems',wishitems);
+  console.log(wishitems,localStorage.getItem("bruhwishitems"));
+  }
+  
+  
+  }
+  
+  </script>
   </head>
 
   <body>
@@ -409,6 +461,23 @@
                         <% } %>
                       </a>
                     </li>
+                    <!-- <li>
+                      <a href='/wishlist'  >
+                           <i class="fas fa-heart"></i>
+                           <div class="point-badge" id="dot"></div>
+                    
+                      </a>
+                    </li> -->
+                    <li>
+                      <a onclick="postdata()" >
+                           <i class="fas fa-heart"></i>
+                           <div class="point-badge" id="dot"></div>
+                    
+                      </a>
+                      <form id="wishform" action="http://localhost:3000/postdata" method="POST">
+                         <input id="datafiles" name='ids' value="" type="hidden"/>
+                      </form>
+                    </li>
                     <% if (login) { %>
                     <li>
                       <a
@@ -464,5 +533,30 @@
         </div>
       </div>
     </div>
+
+
+
+    <script>
+      
+      (function(){
+          var likeditems=(localStorage.getItem('bruhwishitems'));
+          console.log(likeditems);
+          if(likeditems!=null){
+              document.getElementById('dot').style.opacity='1';         
+                  
+          }
+          else if(likeditems===null){
+              document.getElementById('dot').style.opacity='0';
+          }
+      }());
+      function postdata(){
+        if(localStorage.getItem('bruhwishitems')!=null){
+        document.getElementById("datafiles").value=localStorage.getItem('bruhwishitems').split(',');
+        console.log( document.getElementById("datafiles").value);
+        document.getElementById('wishform').submit();
+        }
+      }
+    
+    </script>
   </body>
 </html>

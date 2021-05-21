@@ -11,8 +11,8 @@ const productSchema = Schema({
     type: String,
     required: true,
   },
-  imagePath: {
-    type: String,
+  imagePath:{
+    type: Array,
     required: true,
   },
   description: {
@@ -56,10 +56,14 @@ const productSchema = Schema({
     type: Number,
     required: true,
   },
-  category: {
+  category:[{
     type: mongoose.Schema.Types.ObjectId,
     ref: "Category",
-  },
+  }],
+  subcategory:[{
+    type:mongoose.Schema.Types.ObjectId,
+    ref: "Subcategory",
+  }],
   manufacturer: {
     type: String,
   },

@@ -16,7 +16,7 @@ router.get("/", async (req, res) => {
       .skip(perPage * page - perPage)
       .limit(perPage)
       .populate("category");
-
+console.log("hi"+products);
     const count = await Product.count();
 
     res.render("shop/index", {
@@ -87,7 +87,7 @@ router.get("/:slug", async (req, res) => {
 
     const count = await Product.count({ category: foundCategory.id });
 
-    res.render("shop/index", {
+    res.render("shop/page1", {
       pageName: foundCategory.title,
       currentCategory: foundCategory,
       products: allProducts,
@@ -118,10 +118,10 @@ router.get("/:slug/:sub", async (req, res) => {
       .skip(perPage * page - perPage)
       .limit(perPage)
       .populate("category");
-
+    
     const count = await Product.count({ category: foundCategory.id });
-
-    res.render("shop/subcategoryproducts", {
+// console.log(allProducts);
+    res.render("shop/page2", {
       pageName: foundCategory.title,
       currentCategory: foundCategory,
       products: allProducts,
@@ -131,7 +131,8 @@ router.get("/:slug/:sub", async (req, res) => {
       breadcrumbs: req.breadcrumbs,
       home: "/products/" + req.params.slug.toString() + "/?",
       pages: Math.ceil(count / perPage),
-      text:req.params.sub
+      text:req.params.sub,
+      
     });
   } catch (error) {
     console.log(error);
@@ -145,7 +146,9 @@ router.get("/:slug/:sub/:id", async (req, res) => {
  console.log(req.query);
   try {
     const product = await Product.findById(req.params.id).populate("category");
-    res.render("shop/product", {
+    const products = await Product.find({});
+    console.log("hi"+products);
+    res.render("shop/page3", {
       pageName: product.title,
       product,
       successMsg,

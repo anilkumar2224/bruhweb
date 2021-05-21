@@ -40,6 +40,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "session": "^0.1.0",
+    "slick-carousel": "^1.8.1",
     "slugify": "^1.4.0",
     "stripe": "^8.49.0",
     "styled-components": "^5.1.0"

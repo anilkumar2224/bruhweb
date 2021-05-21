@@ -7,6 +7,7 @@ const User = require("../models/user");
 const Order = require("../models/order");
 const Blog = require("../models/blog");
 const Category = require("../models/category");
+const Subcategory = require("../models/subcategory");
 AdminBro.registerAdapter(AdminBroMongoose);
 
 const express = require("express");
@@ -43,12 +44,13 @@ const adminBro = new AdminBro({
             type: "number",
           },
           imagePath: {
-            isVisible: { list: false, filter: false, show: true, edit: true },
+            isVisible: { list:true, filter: false, show: true, edit: true },
             components: {
               show: AdminBro.bundle(
                 "../components/admin-imgPath-component.jsx"
               ),
             },
+            
           },
         },
       },
@@ -72,7 +74,7 @@ const adminBro = new AdminBro({
             isTitle: true,
           },
           imagePath: {
-            isVisible: { list: false, filter: false, show: true, edit: true },
+            isVisible: { list: true, filter: false, show: true, edit: true },
             components: {
               show: AdminBro.bundle(
                 "../components/admin-imgPath-component.jsx"
@@ -157,6 +159,26 @@ const adminBro = new AdminBro({
     },
     {
       resource: Category,
+      options: {
+        parent: {
+          name: "Admin Content",
+          icon: "User",
+        },
+        properties: {
+          _id: {
+            isVisible: { list: false, filter: true, show: true, edit: false },
+          },
+          slug: {
+            isVisible: { list: false, filter: false, show: false, edit: false },
+          },
+          title: {
+            isTitle: true,
+          },
+        },
+      },
+    },
+    {
+      resource: Subcategory,
       options: {
         parent: {
           name: "Admin Content",

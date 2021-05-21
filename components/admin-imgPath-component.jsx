@@ -3,18 +3,27 @@ import { Label } from "admin-bro";
 
 const imgStyle = {
   width: "30em",
-  border: "2px solid gray",
   borderRadius: "11px",
   margin: "1em auto",
+  padding:"5px"
 };
 
 const AdminShowImage = (props) => {
   const { record, property } = props;
+
+  
   return (
     <div>
       <Label>Product Image</Label>
-      <img style={imgStyle} src={record.params.imagePath} alt="Product Image" />
+     {Object.keys(record.params).map(data=>{
+       if(data.includes("imagePath")){
+         return <img style={imgStyle} src={record.params[data] } alt="Product Image" />;
+       }
+     })}
+     
+     
     </div>
+  
   );
 };
 
