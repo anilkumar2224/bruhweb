@@ -574,7 +574,7 @@ productImages.forEach((image) => {
 			
 	async function sidenav() {
 		$("#cart").html('Loading...');		
-	   const data= await fetch(`http://localhost:3000/sidenav-shopping-cart`);
+	   const data= await fetch(`/sidenav-shopping-cart`);
 			// console.log(data.text());
 	
 			if(data.ok){
@@ -770,7 +770,7 @@ productImages.forEach((image) => {
 			
 		async function addtocart(e){
 			console.log("yep");
-		   const data= await fetch(`http://localhost:3000/add-to-cart/${e}`);
+		   const data= await fetch(`/add-to-cart/${e}`);
 			// console.log(data.text());
 			if(data.ok){
 				const js=await data.json();
@@ -789,7 +789,7 @@ productImages.forEach((image) => {
 		async function deccart(e){
 			console.log("yep");
 			if(document.getElementById('numitem').value>1){
-		   const data= await fetch(`http://localhost:3000/reduce/${e}`);
+		   const data= await fetch(`/reduce/${e}`);
 			// console.log(data.text());
 			if(data.ok){
 				const js=await data.json();

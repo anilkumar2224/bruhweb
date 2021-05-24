@@ -12,7 +12,7 @@
                                 <a href="/">Home</a> <span class="b-arrow"><svg width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M0 2.107L4.351 6.4 0 10.693 1.324 12 7 6.4 1.324.8 0 2.107z" fill="#212121"></path></svg></span>
                             </li>
                             <li class="active ">
-                                <a href="http://localhost:3000/products/skin">Skin</a>
+                                <a href="/products/skin">Skin</a>
                                 <span class="b-arrow"><svg width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M0 2.107L4.351 6.4 0 10.693 1.324 12 7 6.4 1.324.8 0 2.107z" fill="#212121"></path></svg></span>
                             </li>
                             <li class="active ">
@@ -145,7 +145,7 @@
                     <!--  -->
                     <div class="flex-w flex-m p-l-100 p-t-40 respon7">
                         <div class="flex-m bor9 p-r-10 m-r-11">
-                            <a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100" data-tooltip="Add to Wishlist">
+                            <a  onclick="addwishlist(`<%=product._id%>`)" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100" data-tooltip="Add to Wishlist">
                                 <i class="zmdi zmdi-favorite"></i>
                             </a>
                         </div>
@@ -496,7 +496,7 @@ document.getElementById('cmform').onsubmit = async(e) => {
   const login='<%=login%>';
   console.log(login);
   if(login=='false'){
-      window.location.href='http://localhost:3000/user/signin';
+      window.location.href='/user/signin';
   }else{
   if(params.rating!=='0' && params.reviews!==''){
   const response = await fetch("/review", {method:"POST", 
