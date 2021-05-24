@@ -751,7 +751,7 @@ hr.gradient-style {
   padding-top: 0.3em;
 }
 .point-badge {
-  background: #17a2b8;
+  background: #fa3453;
   width: 8px;
   height: 8px;
   border-radius: 50%;
@@ -1334,24 +1334,26 @@ footer p {
 }
 
 #checkPin {
-  background: #d7a449;
+  background: #333;
   color: #fff;
-  padding: 5px 25px;
-  border-radius: 25px;
+  padding: 2px 20px;
+  margin-top: 9px;
+  /* border-radius: 25px; */
   border: none;
   font-weight: 600;
-  margin-left: 10px;
+  height: 40px;
+  /* margin-left: 10px; */
 }
 
 #checkPin:hover {
   background: #fff;
-  color: #d7a449;
-  border: 1px solid #d7a449;
+  color: #333;
+  border: 1px solid #333;
 }
 
 @media screen and (max-width: 768px) {
   #checkPin {
-    margin-top: 15px;
+    /* margin-top: 15px; */
   }
 }
 

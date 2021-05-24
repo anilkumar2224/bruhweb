@@ -59,8 +59,52 @@
     <link rel="stylesheet" href="/stylesheets/style.css" />
 	<link rel="stylesheet" href="/stylesheets/menu.css" />
 	<link rel="stylesheet" href="/stylesheets/horizontalstyle.css" />
-
+	<link rel="stylesheet" href="/stylesheets/login.css" />
 <!--===============================================================================================-->
+
+<script>
+	
+	function addwishlist(e){
+        console.log('fromhere');
+        var likeditems=(localStorage.getItem('bruhwishitems'));
+        if(likeditems!==null&&likeditems.split(",").includes(e)){
+          var updatedarray=  likeditems.split(",").filter(ele=>{
+                if(ele!==e){
+                    return ele;
+                }else{
+                    // document.getElementById(`love${ele}`).classList.remove('blueheart');
+                    var love= document.getElementById(`love${ele}`);
+                           love.style.fill='#fff';
+                }
+            });
+            localStorage.setItem('bruhwishitems',updatedarray);
+            if(updatedarray.length==0){
+                document.getElementById('dot').style.opacity='0';
+                document.getElementById('dot1').style.opacity='0';
+                localStorage.removeItem('bruhwishitems');
+            }
+         
+            
+        }else{
+        console.log(likeditems);
+        document.getElementById('dot').style.opacity='1';
+        document.getElementById('dot1').style.opacity='1';
+        var wishitems=[e];
+        
+        // document.getElementById(`love${e}`).classList.add('blueheart');
+        var love= document.getElementById(`love${e}`);
+                           love.style.fill='#000';
+        if(likeditems!==null){
+             wishitems=wishitems.concat(likeditems);
+        }
+        
+        localStorage.setItem('bruhwishitems',wishitems);
+        console.log(wishitems,localStorage.getItem("bruhwishitems"));
+        }
+        
+        
+        }
+</script>
 </head>
 <body class="animsition">
 	
@@ -403,21 +447,59 @@
 					
 
 					<!-- Icon header -->
-					<div class="wrap-icon-header flex-w flex-r-m">
-						<div class="search icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11">
+					<div class="wrap-icon-header flex-w flex-r-m" >
+						<!-- <div class="search icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11">
 							<input class="search__text" type="text" name="" placeholder="search">
 							<a href="#" class="search__button"><i class="fa fa-search"></i></a>
-						  </div>
+						  </div> -->
+						  <!-- <div class="st-search-bar" >
+						 <form action="/products/search" method="GET">
+							<input type="text" name="search" placeholder="Search..." value="" autocapitalize="off" autocomplete="off" autocorrect="off">
+						</form>
+
+						</div> -->
+						<div class="search-container"><div class="search-box-container"><form role="form" autocomplete="off" action="/products/search"><div class="search-box"><input id="search-input" name="search" class="form-control" type="text" placeholder="Search for items, brands &amp; inspiration" value=""><button class="search-button"><svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19"><path fill="#212121" stroke="#000" stroke-width=".2" d="M18.78 17.722l-4.328-4.328A7.588 7.588 0 0 0 8.585 1a7.586 7.586 0 1 0 0 15.171 7.546 7.546 0 0 0 4.806-1.715l4.327 4.324 1.062-1.058zm-10.194-3.06a6.084 6.084 0 0 1-6.08-6.076c0-3.35 2.726-6.08 6.08-6.08a6.09 6.09 0 0 1 6.08 6.08c0 3.35-2.73 6.076-6.08 6.076z"></path></svg></button></div></form></div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+						  <% if (login) { %>
+						  <a href="/user/profile">
 						  <div class="header-user icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11">
 							<i class="zmdi zmdi-account-circle"></i>
+						
 							 </div>
-						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="2">
+							</a>
+							<% } else {%>
+								<a href="/user/signin">
+						<div class="header-user icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11">
+							<i class="zmdi zmdi-account-circle"></i>
+								  
+							 </div>
+							  </a>
+									  <% }%>
+
+
+
+						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="" id="js-cart" onclick="sidenav()">
 							<i class="zmdi zmdi-shopping-cart"></i>
 						</div>
-
-						<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="0">
-							<i class="zmdi zmdi-favorite-outline"></i>
-						</a>
+					
+						<div class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11"  onclick="postdata()">
+							<i class="zmdi zmdi-favorite-outline p-t-7"></i>
+							<div class="point-badge p-t-7" id="dot"></div>
+						</div>
+						<form id="wishform" action="http://localhost:3000/postdata" method="POST">
+							<input id="datafiles" name='ids' value="" type="hidden"/>
+						 </form>
 					</div>
 				</nav>
 			</div>	
@@ -441,13 +523,13 @@
 			<div class="wrap-icon-header flex-w flex-r-m m-r-15">
 			
 
-				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="2">
+				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="" id="js-cart1" onclick="sidenav()">
 					<i class="zmdi zmdi-shopping-cart"></i>
 				</div>
-
-				<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti" data-notify="0">
-					<i class="zmdi zmdi-favorite-outline"></i>
-				</a>
+				<div class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11"  onclick="postdata()">
+					<i class="zmdi zmdi-favorite-outline p-t-7"></i>
+					<div class="point-badge p-t-7" id="dot1"></div>
+				</div>
 			</div>
 
 		
@@ -459,26 +541,60 @@
 			<div class="s-full js-hide-cart"></div>
 	
 			<div class="menu-lists flex-col-l">
-				<div class="header-title" style="background: #eeeeee63;">
+				<div class="header-title" style="background: #eeeeee63;height: 100px;">
 
-					<span class="mtext-103 cl2">
-						Login/Register
+                
+					<div class="header-user icon-header-item cl2 hov-cl1 trans-04 p-l-12 p-r-11">
+						<i class="zmdi zmdi-account-circle p-t-30"></i>
+							  
+						 </div>
+					<% if (login) { %>
+						<div style="display: flex;flex-direction: column;margin:15px auto ;">
+						<span class="mtext-102 cl2" style="text-align: left !important;">
+							Welocme,
+						</span>
+							<span class="mtext-102 cl2" style="text-align: left !important;">
+								<%=currentUser.username%>
+							</span>
+						</div>
+						<% } else {%>
+							<a href="/user/signin">
+					<span class="mtext-103 cl2 p-l-25">
+						Login/
 					</span>
-	
+				</a>
+				<a href="/user/signup">
+					<span class="mtext-103 cl2">
+						Register
+					</span>
+				</a>
+				<% } %>
 					<div class="fs-35 lh-10 cl2 p-lr-5 pointer hov-cl1 trans-04 js-hide-cart cross ">
 						<i class="zmdi zmdi-close"></i>
 					</div>
 				</div>
+
+
 				<aside class="sidebar-left-collapse">
 
+
+					<div class="sidebar-links navelement st-search-bar" >
+						<form action="/products/search" method="GET">
+						   <input type="text" name="search" placeholder="Search..." value="" autocapitalize="off" autocomplete="off" autocorrect="off">
+					   </form>
+
+					   </div>
 					<div class="sidebar-links navelement">
-						<div class="links ">
-							<a href="#">
-								<span>About Us</span>
-							
-							</a>
-							
-						  </div>
+						<% if (login) { %>
+							<div class="links ">
+								<a href="/user/profile">
+									<span>Profile</span>
+								
+								</a>
+								
+							  </div>
+							  <% } %>
+						
 						
 
 					  <div class="links navelement">
@@ -688,6 +804,7 @@
 						</a>
 						
 					  </div>
+					 
 					  <div class="links ">
 						<a href="#">
 							<span>Contact</span>
@@ -695,6 +812,22 @@
 						</a>
 						
 					  </div>
+					  <div class="links ">
+						<a href="#">
+							<span>About Us</span>
+						
+						</a>
+						
+					  </div>
+					  <% if (login) { %>
+						<div class="links">
+							<a href="/user/logout">
+								<span>Logout</span>
+							
+							</a>
+							
+						  </div>
+						  <% } %>
 					</div>
 				  
 				  </aside>
@@ -741,8 +874,8 @@
 		</div>
 		
 		<div class="header-cart-content flex-w js-pscroll">
-			<ul class="header-cart-wrapitem w-full">
-				<li class="header-cart-item flex-w flex-t m-b-12">
+			<ul class="header-cart-wrapitem w-full" id="cart">
+				<!-- <li class="header-cart-item flex-w flex-t m-b-12">
 					<div class="header-cart-item-img">
 						<img src="images/item-cart-01.jpg" alt="IMG">
 					</div>
@@ -756,9 +889,9 @@
 							1 x $19.00
 						</span>
 					</div>
-				</li>
+				</li> -->
 
-				<li class="header-cart-item flex-w flex-t m-b-12">
+				<!-- <li class="header-cart-item flex-w flex-t m-b-12">
 					<div class="header-cart-item-img">
 						<img src="images/item-cart-02.jpg" alt="IMG">
 					</div>
@@ -772,9 +905,9 @@
 							1 x $39.00
 						</span>
 					</div>
-				</li>
+				</li> -->
 
-				<li class="header-cart-item flex-w flex-t m-b-12">
+				<!-- <li class="header-cart-item flex-w flex-t m-b-12">
 					<div class="header-cart-item-img">
 						<img src="images/item-cart-03.jpg" alt="IMG">
 					</div>
@@ -788,12 +921,12 @@
 							1 x $17.00
 						</span>
 					</div>
-				</li>
+				</li> -->
 			</ul>
 			
 			<div class="w-full">
-				<div class="header-cart-total w-full p-tb-40">
-					Total: $75.00
+				<div class="header-cart-total w-full p-tb-40" id="side-cost">
+					
 				</div>
 
 				<div class="header-cart-buttons flex-w w-full">
@@ -826,7 +959,39 @@
 
 	<!-- Modal1 -->
 	
+<script>
+	 (async function(){
+		var mydiv=document.getElementById('js-cart');
+			mydiv.setAttribute("data-notify",'0');
+			var mydiv1=document.getElementById('js-cart1');
+			mydiv1.setAttribute("data-notify",'0');
+		const data= await fetch(`http://localhost:3000/sidenav-shopping-cart`);
 
+		if(data.ok){
+				const js=await data.json();
+			console.log(js);
+			if(js.cart!==null){
+			mydiv.setAttribute("data-notify",js.cart.totalQty);
+			mydiv1.setAttribute("data-notify",js.cart.totalQty);
+			}
+		}
+
+		 
+      }());
+
+        
+        
+    
+	  function postdata(){
+        if(localStorage.getItem('bruhwishitems')!=null){
+        document.getElementById("datafiles").value=localStorage.getItem('bruhwishitems').split(',');
+        console.log( document.getElementById("datafiles").value);
+        document.getElementById('wishform').submit();
+        }else{
+			document.getElementById('wishform').submit();
+		}
+      }
+</script>
 
 </body>
 </html>

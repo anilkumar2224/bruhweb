@@ -6,7 +6,7 @@
 
 <div class="wrap">
     <div class="back">
-      <div class="back__slide active">
+      <div class="back__slide activee">
         <div class="progress"></div>
       </div>
       <div class="back__slide">
@@ -15,7 +15,7 @@
       </div>
     </div>
     <div class="card">
-      <div class="card__slide active">
+      <div class="card__slide activee">
         <span class="number">01</span>
       </div>
       <div class="card__slide">
@@ -23,7 +23,7 @@
        <span class="number">02</span>
       </div>
       <div class="content">
-        <div class="content__slide active">
+        <div class="content__slide activee">
           <h2 class="title"> <span class="title__line"> <span class="title__inner">Mesmerizing</span></span><span class="title__line"> <span class="title__inner">Depths</span></span></h2>
           <p class="desc">Nunc orci metus, ornare non molestie ac, ultrices eget <br/> dolor. Mauris ac mattis lectus. Praesent facilisis <br/> malesuada sapien nec pharetra. Fusce eleifend, nisl.</p>
           <div class="button-wrap"><a class="button">Learn More<span class="button__hover"></span></a></div>
@@ -129,13 +129,15 @@
                 <div class="make3D" style="transition: all 100ms ease-out 0s;">
                     <div class="product-front" style="display: block;">
                         <div>
-                            <a role="button" data-product-id="728366" class="favourite-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 29 24"><path fill="#fff" stroke="#000" stroke-width="1.826" d="M14.617 21.99l-.058-.029a34.366 34.366 0 0 1-1.923-1.036 36.172 36.172 0 0 1-4.452-3.05l-.002-.001C3.83 14.386 1.787 10.747 1.854 7.37v-.035L1.852 7.3c-.097-1.745.552-3.357 1.744-4.497v-.001C4.72 1.725 6.32 1.117 8.06 1.117c1.283 0 2.498.498 3.546 1.167a12.346 12.346 0 0 1 2.342 1.98l.67.72.668-.72c.477-.514 1.298-1.314 2.342-1.98 1.049-.669 2.264-1.167 3.547-1.167 1.776 0 3.34.607 4.463 1.686h.001c1.182 1.133 1.809 2.711 1.742 4.55v.052c.067 3.341-1.976 6.98-6.328 10.469l-.001.001a36.533 36.533 0 0 1-6.378 4.086l-.057.028z"></path></svg></a>
+                            <a role="button" data-product-id="728366" class="favourite-icon" onclick="addwishlist(`608e3aa4a5f4c4617cdb2b1b`)"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 29 24"><path id="love608e3aa4a5f4c4617cdb2b1b" fill="#fff" stroke="#000" stroke-width="1.826" d="M14.617 21.99l-.058-.029a34.366 34.366 0 0 1-1.923-1.036 36.172 36.172 0 0 1-4.452-3.05l-.002-.001C3.83 14.386 1.787 10.747 1.854 7.37v-.035L1.852 7.3c-.097-1.745.552-3.357 1.744-4.497v-.001C4.72 1.725 6.32 1.117 8.06 1.117c1.283 0 2.498.498 3.546 1.167a12.346 12.346 0 0 1 2.342 1.98l.67.72.668-.72c.477-.514 1.298-1.314 2.342-1.98 1.049-.669 2.264-1.167 3.547-1.167 1.776 0 3.34.607 4.463 1.686h.001c1.182 1.133 1.809 2.711 1.742 4.55v.052c.067 3.341-1.976 6.98-6.328 10.469l-.001.001a36.533 36.533 0 0 1-6.378 4.086l-.057.028z"></path></svg></a>
                         </div>
                        
                         <div class="shadow" style="display: none; opacity: 0;"></div>
                         <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/1.jpg" alt="">
                         <div class="image_overlay"></div>
-                        <div class="add_to_cart">Add to cart</div>
+                        <div class="add_to_cart" onclick="addtocart('608e3aa4a5f4c4617cdb2b1b')">
+                            Add to cart
+                        </div>
                         <div class="view_gallery"> <a href="/products/skin/anil/608e3aa4a5f4c4617cdb2b1b" style="color: #fff;">
                             View Details
                         </a></div>                
@@ -3396,274 +3398,6 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 </head>
-<script>
 
-const slideElements = ['.back__slide', '.card__slide', '.content__slide'];
-let inProgress = false;
-
-const goToSlide = (slideElements, index) => {
-  if (!inProgress) {
-    inProgress = true;
-
-    $('.active').addClass('exit');
-    $('.active').removeClass('active');
-    slideElements.forEach(elem => {
-      $(`${elem}:nth-child(${index})`).addClass('active');
-    });
-
-    const evenSlide = index % 2 === 0;
-    if (evenSlide)
-    $('.content__ping').addClass('content__ping--right');else
-
-    $('.content__ping').removeClass('content__ping--right');
-    $('.content__ping--noanimation').removeClass('content__ping--noanimation');
-
-    setTimeout(() => $('.exit').removeClass('exit'), 1000);
-    setTimeout(() => inProgress = false, 2000);
-  }
-};
-
-$('.content__slide:nth-child(1) .button').on('click', () => goToSlide(slideElements, 2));
-$('.content__slide:nth-child(2) .button').on('click', () => goToSlide(slideElements, 1));
-
-setTimeout(() => goToSlide(slideElements, 2), 2000);
-setTimeout(() => goToSlide(slideElements, 1), 6000);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    $(document).ready(function(){
-	      
-	// $(".largeGrid").click(function(){											
-    // $(this).find('a').addClass('active');
-    // $('.smallGrid a').removeClass('active');
-    
-    // $('.product').addClass('large').each(function(){											
-	// 	});						
-	// 	setTimeout(function(){
-	// 		$('.info-large').show();	
-	// 	}, 200);
-	// 	setTimeout(function(){
-
-	// 		$('.view_gallery').trigger("click");	
-	// 	}, 400);								
-		
-	// 	return false;				
-	// });
-	
-	// $(".smallGrid").click(function(){		        
-    // $(this).find('a').addClass('active');
-    // $('.largeGrid a').removeClass('active');
-    
-	// 	$('div.product').removeClass('large');
-	// 	$(".make3D").removeClass('animate');	
-    // $('.info-large').fadeOut("fast");
-	// 	setTimeout(function(){								
-	// 			$('div.flip-back').trigger("click");
-	// 	}, 400);
-	// 	return false;
-	// });		
-	
-	// $(".smallGrid").click(function(){
-	// 	$('.product').removeClass('large');			
-	// 	return false;
-	// });
-  
- 
-	
-	
-	$('.product').each(function(i, el){					
-
-		// Lift card and show stats on Mouseover
-		$(el).find('.make3D').hover(function(){
-				$(this).parent().css('z-index', "20");
-				$(this).addClass('animate');
-				$(this).find('div.carouselNext, div.carouselPrev').addClass('visible');			
-			 }, function(){
-				$(this).removeClass('animate');			
-				$(this).parent().css('z-index', "1");
-				$(this).find('div.carouselNext, div.carouselPrev').removeClass('visible');
-		});	
-	
-			
-			
-	
-		makeCarousel(el);
-	});
-	
-	$('.add-cart-large').each(function(i, el){
-		$(el).click(function(){
-			var carousel = $(this).parent().parent().find(".carousel-container");
-			var img = carousel.find('img').eq(carousel.attr("rel"))[0];						
-			var position = $(img).offset();	
-
-			var productName = $(this).parent().find('h4').get(0).innerHTML;				
-	
-			$("body").append('<div class="floating-cart"></div>');		
-			var cart = $('div.floating-cart');		
-			$("<img src='"+img.src+"' class='floating-image-large' />").appendTo(cart);
-			
-			$(cart).css({'top' : position.top + 'px', "left" : position.left + 'px'}).fadeIn("slow").addClass('moveToCart');		
-			setTimeout(function(){$("body").addClass("MakeFloatingCart");}, 800);
-			
-			setTimeout(function(){
-			$('div.floating-cart').remove();
-			$("body").removeClass("MakeFloatingCart");
-
-
-			var cartItem = "<div class='cart-item'><div class='img-wrap'><img src='"+img.src+"' alt='' /></div><span>"+productName+"</span><strong>$39</strong><div class='cart-item-border'></div><div class='delete-item'></div></div>";			
-
-			$("#cart .empty").hide();			
-			$("#cart").append(cartItem);
-			$("#checkout").fadeIn(500);
-			
-			$("#cart .cart-item").last()
-				.addClass("flash")
-				.find(".delete-item").click(function(){
-					$(this).parent().fadeOut(300, function(){
-						$(this).remove();
-						if($("#cart .cart-item").size() == 0){
-							$("#cart .empty").fadeIn(500);
-							$("#checkout").fadeOut(500);
-						}
-					})
-				});
- 		    setTimeout(function(){
-				$("#cart .cart-item").last().removeClass("flash");
-			}, 10 );
-			
-		}, 1000);
-			
-			
-		});
-	})
-	
-	/* ----  Image Gallery Carousel   ---- */
-	function makeCarousel(el){
-	
-		
-		var carousel = $(el).find('.carousel ul');
-		var carouselSlideWidth = 315;
-		var carouselWidth = 0;	
-		var isAnimating = false;
-		var currSlide = 0;
-		$(carousel).attr('rel', currSlide);
-		
-		// building the width of the casousel
-		$(carousel).find('li').each(function(){
-			carouselWidth += carouselSlideWidth;
-		});
-		$(carousel).css('width', carouselWidth);
-		
-		// Load Next Image
-		$(el).find('div.carouselNext').on('click', function(){
-			var currentLeft = Math.abs(parseInt($(carousel).css("left")));
-			var newLeft = currentLeft + carouselSlideWidth;
-			if(newLeft == carouselWidth || isAnimating === true){return;}
-			$(carousel).css({'left': "-" + newLeft + "px",
-								   "transition": "300ms ease-out"
-								 });
-			isAnimating = true;
-			currSlide++;
-			$(carousel).attr('rel', currSlide);
-			setTimeout(function(){isAnimating = false;}, 300);			
-		});
-		
-		// Load Previous Image
-		$(el).find('div.carouselPrev').on('click', function(){
-			var currentLeft = Math.abs(parseInt($(carousel).css("left")));
-			var newLeft = currentLeft - carouselSlideWidth;
-			if(newLeft < 0  || isAnimating === true){return;}
-			$(carousel).css({'left': "-" + newLeft + "px",
-								   "transition": "300ms ease-out"
-								 });
-			isAnimating = true;
-			currSlide--;
-			$(carousel).attr('rel', currSlide);
-			setTimeout(function(){isAnimating = false;}, 300);						
-		});
-	}
-	
-	$('.sizes a span, .categories a span').each(function(i, el){
-		$(el).append('<span class="x"></span><span class="y"></span>');
-		
-		$(el).parent().on('click', function(){
-			if($(this).hasClass('checked')){				
-				$(el).find('.y').removeClass('animate');	
-				setTimeout(function(){
-					$(el).find('.x').removeClass('animate');							
-				}, 50);	
-				$(this).removeClass('checked');
-				return false;
-			}
-			
-			$(el).find('.x').addClass('animate');		
-			setTimeout(function(){
-				$(el).find('.y').addClass('animate');
-			}, 100);	
-			$(this).addClass('checked');
-			return false;
-		});
-	});
-	
-	$('.add_to_cart').click(function(){
-		var productCard = $(this).parent();
-		var position = productCard.offset();
-		var productImage = $(productCard).find('img').get(0).src;
-		var productName = $(productCard).find('.product_name').get(0).innerHTML;				
-
-		$("body").append('<div class="floating-cart"></div>');		
-		var cart = $('div.floating-cart');		
-		productCard.clone().appendTo(cart);
-		$(cart).css({'top' : position.top + 'px', "left" :position.left + 'px'}).fadeIn("slow").addClass('moveToCart').css({'top' : $(window).scrollTop() + 'px'});		
-		setTimeout(function(){
-
-            $("body").addClass("MakeFloatingCart");
-
-        }, 800);
-		setTimeout(function(){
-			$('div.floating-cart').remove();
-			$("body").removeClass("MakeFloatingCart");
-
-
-			var cartItem = "<div class='cart-item'><div class='img-wrap'><img src='"+productImage+"' alt='' /></div><span>"+productName+"</span><strong>$39</strong><div class='cart-item-border'></div><div class='delete-item'></div></div>";			
-
-			$("#cart .empty").hide();			
-			$("#cart").append(cartItem);
-			$("#checkout").fadeIn(500);
-			
-			$("#cart .cart-item").last()
-				.addClass("flash")
-				.find(".delete-item").click(function(){
-					$(this).parent().fadeOut(300, function(){
-						$(this).remove();
-						if($("#cart .cart-item").size() == 0){
-							$("#cart .empty").fadeIn(500);
-							$("#checkout").fadeOut(500);
-						}
-					})
-				});
- 		    setTimeout(function(){
-				$("#cart .cart-item").last().removeClass("flash");
-			}, 10 );
-			
-		}, 1000);
-	});
-});
-
-
-        </script>
 
 <%- include ../partials/homefooter %>

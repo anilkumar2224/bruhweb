@@ -19,7 +19,7 @@ router.use(csrfProtection);
 // GET: display the signup form with csrf token
 router.get("/signup", middleware.isNotLoggedIn, (req, res) => {
   var errorMsg = req.flash("error")[0];
-  res.render("user/signup", {
+  res.render("user/signuppage", {
     csrfToken: req.csrfToken(),
     errorMsg,
     pageName: "Sign Up",
@@ -34,7 +34,7 @@ router.post(
     validateSignup,
     passport.authenticate("local.signup", {
       successRedirect: "/user/profile",
-      failureRedirect: "/user/signup",
+      failureRedirect: "/user/signuppage",
       failureFlash: true,
     }),
   ],
@@ -52,7 +52,8 @@ router.post(
         req.session.oldUrl = null;
         res.redirect(oldUrl);
       } else {
-        res.redirect("/user/profile");
+        // res.redirect("/user/profile");
+        res.redirect("/");
       }
     } catch (err) {
       console.log(err);
@@ -65,7 +66,7 @@ router.post(
 // GET: display the signin form with csrf token
 router.get("/signin", middleware.isNotLoggedIn, async (req, res) => {
   var errorMsg = req.flash("error")[0];
-  res.render("user/signin", {
+  res.render("user/loginpage", {
     csrfToken: req.csrfToken(),
     errorMsg,
     pageName: "Sign In",
@@ -80,7 +81,7 @@ router.post(
     userSignInValidationRules(),
     validateSignin,
     passport.authenticate("local.signin", {
-      failureRedirect: "/user/signin",
+      failureRedirect: "/user/loginpage",
       failureFlash: true,
     }),
   ],
@@ -104,7 +105,8 @@ router.post(
         req.session.oldUrl = null;
         res.redirect(oldUrl);
       } else {
-        res.redirect("/user/profile");
+        // res.redirect("/user/profile");
+        res.redirect("/");
       }
     } catch (err) {
       console.log(err);

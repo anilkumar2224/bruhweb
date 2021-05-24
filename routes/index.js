@@ -3,6 +3,7 @@ const csrf = require("csurf");
 const stripe = require("stripe")(process.env.STRIPE_PRIVATE_KEY);
 const Product = require("../models/product");
 const Category = require("../models/category");
+const Review= require("../models/reviews");
 const Cart = require("../models/cart");
 const Order = require("../models/order");
 const middleware = require("../middleware");
@@ -11,20 +12,21 @@ const router = express.Router();
 
 const csrfProtection = csrf();
 router.post("/postdata",async(req,res)=>{
-  console.log(req.body.ids);
+  console.log(req.body);
   if(req.body.ids===''){
-    // res.render("shop/wishlist",{
-    //   pageName: "Wish List",
-    //   products:[]
-    //   }
-    //   );
+    res.render("shop/wish",{
+      pageName: "Wish List",
+      products:[]
+      }
+      );
 
-  }else{
+  }
+  else{
   const productIds=req.body.ids.split(',');
    var products=await Product.find().where('_id').in(productIds).exec();
 
   console.log("pampincheproducts",products);
-  res.render("shop/wishlist",{
+  res.render("shop/wish",{
   pageName: "Wish List",
   products
   }
@@ -33,15 +35,18 @@ router.post("/postdata",async(req,res)=>{
 }
 })
 
+
+
 router.use(csrfProtection);
 
 // GET: home page
 router.get("/", async (req, res) => {
   try {
+    
     const products = await Product.find({})
       .sort("-createdAt")
       .populate("category");
-    res.render("shop/homebody", { pageName: "Home", products });
+    res.render("shop/homebody", { pageName: "Home", products});
   } catch (error) {
     console.log(error);
     res.redirect("/");
@@ -99,12 +104,71 @@ router.get("/add-to-cart/:id", async (req, res) => {
     }
     req.session.cart = cart;
     req.flash("success", "Item added to the shopping cart");
-    res.redirect(req.headers.referer);
+    // res.redirect(req.headers.referer);
+    // res.send("cartsize"+cart.totalQty);
+    // res.sendStatus(cart.totalQty)
+    res.send({'data':cart.totalQty});
   } catch (err) {
     console.log(err.message);
-    res.redirect("/");
+    // res.redirect("/");
+    res.send('bye');
   }
 });
+
+
+//add comment
+router.post("/review", async (req, res) => {
+  console.log(req.body,req);
+  const productId = req.body.id;
+  try {
+    // get the correct cart, either from the db, session, or an empty cart.
+    if (req.user) {
+      product_reviews = await Review.findOne({ productId:productId });
+      console.log(product_reviews);
+    }else {
+      return res.redirect('/user/signin');
+    }
+    let review;
+  if ( !product_reviews) {
+    review = new Review({
+      reviews:[],
+      productId:productId
+    });
+    } else {
+      review = product_reviews;
+    }
+    console.log(review);
+    
+
+      // adding review
+      review.reviews.push({
+        name:req.user.username,  
+        rating: req.body.rating,
+        comment: req.body.review,
+        user: req.user._id,
+      });
+ 
+    
+
+    // if the user is logged in, store the user's id and save review to the db
+    if (req.user) {
+
+      await review.save();
+    }
+   
+    req.flash("success", "Item added to the shopping cart");
+    // res.redirect(req.headers.referer);
+    // res.send("cartsize"+cart.totalQty);
+    // res.sendStatus(cart.totalQty)
+    const data=review.reviews[review.reviews.length-1];
+    res.send({'reviews':data,'name':req.user.username});
+  } catch (err) {
+    console.log(err.message);
+    // res.redirect("/");
+    res.send('bye');
+  }
+});
+
 
 // GET: view shopping cart contents
 router.get("/shopping-cart", async (req, res) => {
@@ -145,6 +209,7 @@ router.get("/shopping-cart", async (req, res) => {
   }
 });
 
+
 // GET: reduce one from an item in the shopping cart
 router.get("/reduce/:id", async function (req, res, next) {
   // if a user is logged in, reduce from the user's cart and save
@@ -184,7 +249,8 @@ router.get("/reduce/:id", async function (req, res, next) {
       }
     }
     console.log("abbo",req.headers.referer);
-    res.redirect(req.headers.referer);
+    // res.redirect(req.headers.referer);
+    res.send({'data':cart.totalQty});
   } catch (err) {
     console.log(err.message);
     res.redirect("/");
@@ -306,7 +372,40 @@ router.get("/wishlist",async(req, res) => {
 });
 
 
-
+router.get("/sidenav-shopping-cart", async (req, res) => {
+  try {
+    // find the cart, whether in session or in db based on the user state
+    let cart_user;
+    if (req.user) {
+     
+      cart_user = await Cart.findOne({ user: req.user._id });
+    }
+    // if user is signed in and has cart, load user's cart from the db
+    if (req.user && cart_user) {
+      req.session.cart = cart_user;
+      return res.send( {
+        cart: cart_user,
+        products: await productsFromCart(cart_user),
+      });
+    }
+    
+    // if there is no cart in session and user is not logged in, cart is empty
+    if (!req.session.cart) {
+      return res.send( {
+        cart: null,
+        products: null,
+      });
+    }
+    // otherwise, load the session's cart
+    return res.send( {
+      cart: req.session.cart,
+      products: await productsFromCart(req.session.cart),
+    });
+  } catch (err) {
+    console.log(err.message);
+    res.redirect("/");
+  }
+});
 
 
 // create products array to store the info of each product in the cart

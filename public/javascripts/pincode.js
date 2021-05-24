@@ -14,12 +14,12 @@ console.log(zipCode);
     }
     if (flag)
     {
-        $('#statusResult1').html('Delivery Available');
+        $('#statusResult1').html('Shipping Available! There will be a delay in shipping of your order owing to the COVID situation.').css('color','green');
  $('#statusResult2').html('');
     }
 else
 {
-        $('#statusResult2').html('DeliveryNot Available');
+        $('#statusResult2').html('Shipping is not available.').css('color','red');
   $('#statusResult1').html('');
 }
 return;

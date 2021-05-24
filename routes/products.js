@@ -3,7 +3,10 @@ const router = express.Router();
 const Product = require("../models/product");
 const Category = require("../models/category");
 var moment = require("moment");
-
+const Review= require("../models/reviews");
+const csrf = require("csurf");
+const csrfProtection = csrf();
+router.use(csrfProtection);
 // GET: display all products
 router.get("/", async (req, res) => {
   const successMsg = req.flash("success")[0];
@@ -54,7 +57,7 @@ router.get("/search", async (req, res) => {
     const count = await Product.count({
       title: { $regex: req.query.search, $options: "i" },
     });
-    res.render("shop/index", {
+    res.render("shop/page4", {
       pageName: "Search Results",
       products,
       successMsg,
@@ -147,6 +150,11 @@ router.get("/:slug/:sub/:id", async (req, res) => {
   try {
     const product = await Product.findById(req.params.id).populate("category");
     const products = await Product.find({});
+   const product_reviews = await Review.findOne({ productId:req.params.id });
+   let data=[];
+   if(product_reviews){
+     data=product_reviews.reviews;
+   }
     console.log("hi"+products);
     res.render("shop/page3", {
       pageName: product.title,
@@ -154,6 +162,8 @@ router.get("/:slug/:sub/:id", async (req, res) => {
       successMsg,
       errorMsg,
       moment: moment,
+      csrfToken:req.csrfToken(),
+      reviews:data
     });
   } catch (error) {
     console.log(error);

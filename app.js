@@ -11,9 +11,10 @@ const flash = require("connect-flash");
 const Category = require("./models/category");
 var MongoStore = require("connect-mongo")(session);
 const connectDB = require("./config/db");
-
+const bodyparser=require('body-parser');
 const app = express();
 require("./config/passport");
+
 
 // mongodb configuration
 connectDB();
