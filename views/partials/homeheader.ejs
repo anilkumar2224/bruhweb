@@ -965,7 +965,7 @@
 			mydiv.setAttribute("data-notify",'0');
 			var mydiv1=document.getElementById('js-cart1');
 			mydiv1.setAttribute("data-notify",'0');
-		const data= await fetch(`http://localhost:3000/sidenav-shopping-cart`);
+		const data= await fetch(`/sidenav-shopping-cart`);
 
 		if(data.ok){
 				const js=await data.json();
