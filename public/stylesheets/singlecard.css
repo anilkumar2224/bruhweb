@@ -81,8 +81,7 @@ div.large .make3D{
          -o-transition:  300ms ease-out; 
             transition:  300ms ease-out; 
 }
-.large div.make3D{box-shadow:0px 5px 31px -1px rgba(0, 0, 0, 0);}
-.large div.flip-back{display:none;}
+
 .stats-container{
 	background:#fff;	
 	position:absolute;
@@ -266,6 +265,7 @@ text-align: center;
     position: relative;
     margin-top: 50px;
     overflow: hidden;
+	margin-bottom: 50px;
 }
 .block-header-info {
     line-height: 1.71;

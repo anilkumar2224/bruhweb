@@ -22,6 +22,7 @@
     /* font-family: "Montserrat"; */
     font-weight: 400;
     font-size: 2.875em;
+    text-align: center;
     
     color: #1c1d1d;
     
@@ -193,6 +194,7 @@
     -webkit-box-flex: 1;
         -ms-flex: 1;
             flex: 1;
+            height: 60px !important;
   }
   
   /* modules/login.css */
@@ -259,6 +261,7 @@
     color: var(--loginSubmitColor);
     font-weight: 700;
     text-transform: uppercase;
+    height: 50px !important;
   }
   
   .login input[type="submit"]:focus,

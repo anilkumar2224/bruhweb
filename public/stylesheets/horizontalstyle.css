@@ -20,7 +20,7 @@
     font-family: "Mukta Malar", sans-serif;
     color: #333333;
     font-size: 62.5%;
-    margin-top: 50px;
+  
     position: relative;
   
 
@@ -60,7 +60,8 @@ background: #fff !important;
 }
 .stories-title{
   width: 90px !important;
-  height: 90px !important;
+     /* height: 90px !important; */
+  height: auto;
   white-space: pre-wrap;
 }
 .card-wrap  .one{
@@ -334,12 +335,15 @@ element.style {
 .slider-center {
   max-width: 980px;
   margin: 0 auto -10px;
+  border-bottom: 2px solid #f5f5f5;
+
 }
 .slider-center .slick-slider {
   overflow: visible;
 }
 .slider-center .slick-slider {
   overflow: visible;
+
 }
 
 
@@ -350,6 +354,7 @@ element.style {
   flex-direction: row;
   width: 100%;
   margin:auto;
+  justify-content: space-around;
 }
 .slick-slide{
   display: inline-block;

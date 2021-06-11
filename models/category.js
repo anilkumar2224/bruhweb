@@ -14,6 +14,16 @@ const categorySchema = Schema({
     unique: true,
     slug: "title",
   },
+  Subcategories:[{    
+    Parent_Subcategory:{
+      type: mongoose.Schema.Types.ObjectId,
+       ref: "SubCategoryParent"
+      },
+      Child_Subcategory:[{
+        type: mongoose.Schema.Types.ObjectId,
+       ref: "SubCategoryChild"
+      }]
+    }]
 });
 
 module.exports = mongoose.model("Category", categorySchema);

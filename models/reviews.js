@@ -27,9 +27,9 @@ const reviewSchema = new mongoose.Schema({
       },
     },
   ],
-  productId: {
+  courseId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Product",
+    ref: "Course",
   },
 
 });
