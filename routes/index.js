@@ -18,13 +18,13 @@ router.use(csrfProtection);
 router.get("/", async (req, res) => {
   try {
    console.log(req.session)
-   res.render("shop/homebody", { pageName: "Home"});
+   res.render("shop/main", { pageName: "Home"});
   } catch (error) {
     console.log(error);
     res.redirect("/");
   }
 });
-router.get("/course", async (req, res) => {
+router.get("/course-view", async (req, res) => {
   try {
    console.log(req.session)
    res.render("shop/course", { pageName: "Home"});
@@ -34,7 +34,15 @@ router.get("/course", async (req, res) => {
   }
 });
 
-
+router.get("/course", async (req, res) => {
+  try {
+   console.log(req.session)
+   res.render("shop/product", { pageName: "Home"});
+  } catch (error) {
+    console.log(error);
+    res.redirect("/");
+  }
+});
 
 
 module.exports = router;

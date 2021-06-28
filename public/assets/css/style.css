@@ -832,7 +832,7 @@ button, body .pac-container {
 
 /* Headlines */
 h1, h2, h3, h4, h5, h6 {
-  color: #333;
+  /* color: #333; */
   font-weight: 500;
   margin: 0;
   padding: 0;
@@ -6508,7 +6508,7 @@ template {
   }
   .sidebar .sidebar_inner {
     width: 300px;
-    background-color: white;
+    background-color: transparent;
     height: 100vh;
     position: relative;
     z-index: 3;
@@ -6528,9 +6528,12 @@ template {
   }
 }
 
-header {
-  background-color: white;
+.giveborder{
   border-bottom: 1px solid #E5E9EF;
+}
+header {
+  background-color: transparent ;
+
   position: fixed;
   left: 0;
   right: 0;
@@ -6575,7 +6578,8 @@ header .header_inner .left-side #logo {
 
 header .header_inner .left-side #logo img {
   max-width: none;
-  height: 32px;
+  height: 55px;
+  width: 150px;
 }
 
 header .header_inner .left-side #logo img.logo_inverse,
@@ -7275,7 +7279,7 @@ header.uk-sticky-fixed {
 }
 
 .header_menu > ul > li > a {
-  color: #9c9c9c;
+
   font-size: 15px;
   padding: 1.5rem 0.9rem;
   text-transform: capitalize;
@@ -7352,7 +7356,7 @@ header .uk-dropdown {
 
 header .header_inner,
 .horizontal .container {
-  max-width: 1160px;
+  max-width: 97vw;
 }
 
 @media (min-width: 768px) {
@@ -7417,7 +7421,8 @@ header .header_inner,
   }
   header .header_inner .left-side #logo img.logo_mobile {
     display: block !important;
-    height: 25px;
+    height: 55px;
+    width: 100px;
   }
   header .header_inner .right-side {
     position: absolute;
