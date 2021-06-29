@@ -35,18 +35,17 @@ const adminBro = new AdminBro({
           course_name: {
             isVisible: { list: true, filter: true, show: true, edit: true },
           },
+          price: {
+            isVisible: { list: true, filter: true, show: true, edit: true },
+          },
           description: {
             isVisible: { list: true, filter: true, show: true, edit: true },
           },
-          curriculum: {
-            isVisible: { list: true, filter: true, show: true, edit: true },
-          },   
-          author_name: {
+           
+          tutor_name: {
             isVisible: { list: true, filter: true, show: true, edit: true },
         },
-        related_courses: {
-          isVisible: { list: true, filter: true, show: true, edit: true },
-      },
+    
       
         
         },

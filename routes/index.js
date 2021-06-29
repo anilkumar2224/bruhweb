@@ -1,7 +1,7 @@
 const express = require("express");
 const csrf = require("csurf");
-const stripe = require("stripe")(process.env.STRIPE_PRIVATE_KEY);
 const Category = require("../models/category");
+const Course = require("../models/course");
 const Review= require("../models/reviews");
 
 const middleware = require("../middleware");
@@ -18,7 +18,16 @@ router.use(csrfProtection);
 router.get("/", async (req, res) => {
   try {
    console.log(req.session)
-   res.render("shop/main", { pageName: "Home"});
+   const category=await Category.find();
+   console.log(category);
+   let course=[];
+   course=await Course.find().populate('category');
+   
+   console.log(course);
+   res.render("shop/main", { 
+    course,
+    category
+    });
   } catch (error) {
     console.log(error);
     res.redirect("/");
@@ -26,7 +35,8 @@ router.get("/", async (req, res) => {
 });
 router.get("/course-view", async (req, res) => {
   try {
-   console.log(req.session)
+   console.log(req.session);
+   
    res.render("shop/course", { pageName: "Home"});
   } catch (error) {
     console.log(error);
@@ -34,10 +44,15 @@ router.get("/course-view", async (req, res) => {
   }
 });
 
-router.get("/course", async (req, res) => {
+router.get("/course/:id", async (req, res) => {
   try {
    console.log(req.session)
-   res.render("shop/product", { pageName: "Home"});
+   const id=req.params.id;
+   const course=await Course.find({_id:id}).populate('category').populate('related_courses');
+   console.log(course)
+   res.render("shop/product", { 
+    course:course[0]
+  });
   } catch (error) {
     console.log(error);
     res.redirect("/");

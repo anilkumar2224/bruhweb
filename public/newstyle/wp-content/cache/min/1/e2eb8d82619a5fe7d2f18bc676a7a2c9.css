@@ -2188,8 +2188,8 @@ section.cc-block--list {
 @font-face {
     font-display: swap;
     font-family: "icons";
-    src: url(/newstyle/wp-content/themes/algoan/assets/fonts/icons/icons.eot?1619189591);
-    src: url("/newstyle/wp-content/themes/algoan/assets/fonts/icons/icons.eot?1619189591#iefix") format("eot"), url(/newstyle/wp-content/themes/algoan/assets/fonts/icons/icons.woff2?1619189591) format("woff2"), url(/newstyle/wp-content/themes/algoan/assets/fonts/icons/icons.woff?1619189591) format("woff"), url(/newstyle/wp-content/themes/algoan/assets/fonts/icons/icons.ttf?1619189591) format("truetype"), url("/newstyle/wp-content/themes/algoan/assets/fonts/icons/icons.svg?1619189591#icons") format("svg")
+    src: url(/newstyle/wp-content/themes/algoan/assets/fonts/icons/icons039f.eot?1619189591);
+    src: url("/newstyle/wp-content/themes/algoan/assets/fonts/icons/icons039f.eot?1619189591#iefix") format("eot"), url(/newstyle/wp-content/themes/algoan/assets/fonts/icons/icons039f.woff2?1619189591) format("woff2"), url(/newstyle/wp-content/themes/algoan/assets/fonts/icons/icons039f.woff?1619189591) format("woff"), url(/newstyle/wp-content/themes/algoan/assets/fonts/icons/icons039f.ttf?1619189591) format("truetype"), url("/newstyle/wp-content/themes/algoan/assets/fonts/icons/icons039f.svg?1619189591#icons") format("svg")
 }
 
 .icon:before,
@@ -2402,6 +2402,7 @@ form .hs-button,
     -webkit-tap-highlight-color: transparent
 }
 
+
 .algoan-button span,
 form .hs-button span,
 .extranet-public__form form input.button-primary span,
@@ -2465,7 +2466,13 @@ body[data-inputmode="touch"] .wpulivesearch-pager--load-more .load-more-button:h
     height: 56px;
     line-height: 55px
 }
-
+@media(max-width:1028px){
+    #loginbtn{
+        padding: 0 22px; 
+        height: 40px;
+        line-height: 40px;
+    }
+}
 .algoan-button--secondary:focus,
 .algoan-button--secondary:hover,
 .algoan-button--secondary {
@@ -3305,7 +3312,7 @@ body {
 }
 
 .centered-container>* {
-    max-width: 1080px
+    max-width: 1300px
 }
 
 .centered-container--thin>* {
@@ -5186,7 +5193,7 @@ section.cc-block--forms:first-child {
         width: 153px;
         height: 70px;
         background: transparent url(/newstyle/wp-content/themes/algoan/assets/images/dots.svg) no-repeat center center;
-        background-size: cover
+        background-size: cover;
     }
 }
 

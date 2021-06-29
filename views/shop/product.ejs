@@ -17,10 +17,10 @@
 
                 <div class="lg:w-9/12 relative z-10">
 
-                    <div class="uppercase text-gray-200 mb-2 font-semibold">Web develpment</div>
-                    <h1 class="lg:leading-10 lg:text-3xl text-white text-2xl leading-8 font-semibold"> Learn JavaScript from scratch to become a professional JavaScript developer. </h1>
-                    <p class="lg:w-3/4 mt-4 text-gray-200"> Master JavaScript with the most complete course! Projects Excellent course. we explain the core concepts in javascript 
-                        that are usually glossed over in other </p>
+                    <div class="uppercase text-gray-200 mb-2 font-semibold"><%=course.category.title%></div>
+                    <h1 class="lg:leading-10 lg:text-3xl text-white text-2xl leading-8 font-semibold"><%=course.course_name%> </h1>
+                    <p class="lg:w-3/4 mt-4 text-gray-200"><%=course.short_description%> </p>
+                    <h1 class="lg:leading-10 lg:text-3xl text-white text-2xl leading-8 font-semibold">₹<%=course.price%></>
                     <ul class="flex text-gray-200 gap-4 mt-4 mb-1">
                         <li class="flex items-center">
                             <span class="avg bg-yellow-500 mr-2 px-2 rounded text-white font-semiold"> 4.9 </span>
@@ -33,14 +33,14 @@
                         <li> <ion-icon name="people-circle-outline"></ion-icon> 1200 Enerolled </li>
                     </ul>
                     <ul class="lg:flex items-center text-gray-200">
-                        <li> Created by <a href="#" class="text-white fond-bold hover:underline hover:text-white"> Stella Johnson </a> </li>
-                        <li> <span class="lg:block hidden mx-3 text-2xl">·</span> </li>
-                        <li> Last updated 10/2019</li>
+                        <li> Created by <a href="#" class="text-white fond-bold hover:underline hover:text-white"><%=course.tutor_name%> </a> </li>
+                        <!-- <li> <span class="lg:block hidden mx-3 text-2xl">·</span> </li> -->
+                        <!-- <li> Last updated 10/2019</li> -->
                     </ul>
 
                 </div>
 
-                <img src="/assets/images/courses/course-intro.png" alt="" class="absolute bottom-0 right-0 hidden lg:block">
+                <img src="<%=course.course_img%>" alt="" class="absolute bottom-0 right-0 hidden lg:block" style="height: 22vw;object-fit: contain;">
 
             </div>
              
@@ -67,45 +67,37 @@
                             <div>
                                 <h3 class="text-xl font-semibold mb-3"> Description </h3>
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
-                                    tincidunt ut
-                                    laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim laoreet dolore magna
-                                    aliquam erat
-                                    volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit
-                                    lobortis
-                                    nisl ut aliquip ex ea commodo consequat
+                                    <%=course.description%>
                                 </p>
                             </div>
                             <div>
                                 <h3 class="text-lg font-semibold mb-1"> What You’ll Learn </h3>
                                 <ul class="grid md:grid-cols-2">
-                                    <li> <i class="fa fa-check text-xl font-bold mr-2"></i>Setting up the environment</li>
-                                    <li> <i class="fa fa-check text-xl font-bold mr-2"></i>Advanced HTML Practices</li>
+                                    <%for(let i=0;i<course.whatuwilllearn.length;i++){%>
+                                    <li> <i class="fa fa-check text-xl font-bold mr-2"></i><%=course.whatuwilllearn[i]%></li>
+                                    <%}%>
+                                    <!-- <li> <i class="fa fa-check text-xl font-bold mr-2"></i>Advanced HTML Practices</li>
                                     <li> <i class="fa fa-check text-xl font-bold mr-2"></i>Build a portfolio website</li>
                                     <li> <i class="fa fa-check text-xl font-bold mr-2"></i>Responsive Designs</li>
                                     <li> <i class="fa fa-check text-xl font-bold mr-2"></i>Understand HTML Programming</li>
                                     <li> <i class="fa fa-check text-xl font-bold mr-2"></i>Code HTML</li>
-                                    <li> <i class="fa fa-check text-xl font-bold mr-2"></i>Start building beautiful websites</li>
+                                    <li> <i class="fa fa-check text-xl font-bold mr-2"></i>Start building beautiful websites</li> -->
                                 </ul>
                             </div>
                             <div>
                                 <h3 class="text-lg font-semibold mb-1"> Requirements</h3>
                                 <ul class="list-disc ml-5 space-y-1">
-                                    <li>Any computer will work: Windows, macOS or Linux</li>
-                                    <li>Basic programming HTML and CSS.</li>
-                                    <li>Basic/Minimal understanding of JavaScript</li>
+                                    <%for(let i=0;i<course.requirements.length;i++){%>
+                                    <li><%=course.requirements[i]%></li>
+                                    <%}%>
+                                    <!-- <li>Basic programming HTML and CSS.</li>
+                                    <li>Basic/Minimal understanding of JavaScript</li> -->
                                 </ul>
                             </div>
                             <div>
                                 <h3> Here is exactly what we cover in this course: </h3>
-                                    <p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
-                                    tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis
-                                    nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-                                    Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod
-                                    mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                                    sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut
-                                    wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut
-                                    aliquip ex ea commodo consequat.</p>
+                                    <p> <%=course.what_you_cover%>
+                                  </p>
                             </div>
                         </div>
     
@@ -115,16 +107,19 @@
                     <div id="curriculum">
                         <h3 class="mb-4 text-xl font-semibold lg:mb-5"> Course Curriculum </h3>
                         <ul uk-accordion="multiple: true" class="tube-card p-4 divide-y space-y-3">
-    
+                <%for(let i=0;i<course.curriculum.length;i++){%>
+                    <%if(i==0){%>
                             <li class="uk-open">
-                                <a class="uk-accordion-title text-md mx-2 font-semibold" href="#">  <div class="mb-1 text-sm font-medium"> Section 1 </div> Html Introduction </a>
+                                <a class="uk-accordion-title text-md mx-2 font-semibold" href="#">  <div class="mb-1 text-sm font-medium"> Section <%=i%> </div> <%=course.curriculum[i].title%> </a>
                                 <div class="uk-accordion-content mt-3 text-base">
         
                                     <ul class="course-curriculum-list font-medium">
+                    <%for(let j=0;j<course.curriculum[i].content.length;j++){%>
                                         <li class=" hover:bg-gray-100 p-2 flex rounded-md">
-                                            <ion-icon name="play-circle" class="text-2xl mr-2"></ion-icon> Introduction <span class="text-sm ml-auto"> 4 min </span>
+                                            <ion-icon name="play-circle" class="text-2xl mr-2"></ion-icon> <%=course.curriculum[i].content[j].topic_name%> <span class="text-sm ml-auto"> <%=course.curriculum[i].content[j].topic_video_duration%> min </span>
                                         </li>
-                                        <li class=" hover:bg-gray-100 p-2 flex rounded-md">
+                                        <%}%>
+                                        <!-- <li class=" hover:bg-gray-100 p-2 flex rounded-md">
                                             <ion-icon name="play-circle" class="text-2xl mr-2"></ion-icon> What is HTML <span class="text-sm ml-auto"> 5 min </span>
                                         </li>
                                         <li class=" hover:bg-gray-100 p-2 flex rounded-md">
@@ -140,21 +135,23 @@
                                         <li class=" hover:bg-gray-100 p-2 flex rounded-md">
                                             <ion-icon name="play-circle" class="text-2xl mr-2"></ion-icon>
                                             Brain Streak <span class="text-sm ml-auto"> 5 min </span>
-                                        </li>
+                                        </li> -->
                                     </ul>
         
                                 </div>
                             </li>
-                            <li class="pt-2">
-                                <a class="uk-accordion-title text-md mx-2 font-semibold" href="#"> <div class="mb-1 text-sm font-medium"> Section 2 </div> Your First webpage  </a>
+                            <%}else{%>
+                          <li class="pt-2">
+                                <a class="uk-accordion-title text-md mx-2 font-semibold" href="#"> <div class="mb-1 text-sm font-medium"> Section  <%=i%></div> <%=course.curriculum[i].title%> </a>
                                 <div class="uk-accordion-content mt-3 text-base">
         
                                     <ul class="course-curriculum-list font-medium">
+                 <%for(let j=0;j<course.curriculum[i].content.length;j++){%>
                                         <li class=" hover:bg-gray-100 p-2 flex rounded-md">
-                                            <ion-icon name="play-circle" class="text-2xl mr-2"></ion-icon> Headings
-                                            <span class="text-sm ml-auto"> 4 min </span>
+                                        <ion-icon name="play-circle" class="text-2xl mr-2"></ion-icon> <%=course.curriculum[i].content[j].topic_name%> <span class="text-sm ml-auto"> <%=course.curriculum[i].content[j].topic_video_duration%> min </span>
                                         </li>
-                                        <li class=" hover:bg-gray-100 p-2 flex rounded-md">
+                                        <%}%>
+                                        <!-- <li class=" hover:bg-gray-100 p-2 flex rounded-md">
                                             <ion-icon name="play-circle" class="text-2xl mr-2"></ion-icon> Paragraphs
                                             <span class="text-sm ml-auto"> 5 min </span>
                                         </li>
@@ -173,12 +170,12 @@
                                             <ion-icon name="play-circle" class="text-2xl mr-2"></ion-icon>
                                             Live Preview Feature
                                             <span class="text-sm ml-auto"> 5 min </span>
-                                        </li>
+                                        </li> -->
                                     </ul>
         
                                 </div>
                             </li>
-                            <li class="pt-2">
+                          <!-- <li class="pt-2">
                                 <a class="uk-accordion-title text-md mx-2 font-semibold" href="#"> <div class="mb-1 text-sm font-medium"> Section 3 </div> Build Complete Webste  </a>
                                 <div class="uk-accordion-content mt-3 text-base">
         
@@ -205,7 +202,9 @@
                                     </ul>
         
                                 </div>
-                            </li>
+                            </li> -->
+                            <%}%>
+                            <%}%>
                         </ul>
                     </div>
     
@@ -213,28 +212,14 @@
                     <div class="tube-card p-5 lg:p-8" id="faq"> 
                         <h3 class="text-xl font-semibold mb-3 lg:mb-5"> Course Faq </h3> 
                         <ul uk-accordion="multiple: true" class="divide-y space-y-3">
-                            <li class="bg-gray-100 px-4 py-3 rounded-md uk-open">
-                                <a class="uk-accordion-title font-semibold text-base" href="#"> Html Introduction </a>
+                      <%for(let i=0;i<course.coursefaq.length;i++){%>
+                            <li class="bg-gray-100 px-4 py-3 rounded-md">
+                                <a class="uk-accordion-title font-semibold text-base" href="#"> <%=course.coursefaq[i].question%></a>
                                 <div class="uk-accordion-content mt-3">
-                                    <p> The primary goal of this quick start guide is to introduce you to
-                                        Unreal
-                                        Engine 4`s (UE4) development environment. By the end of this guide,
-                                        you`ll
-                                        know how to set up and develop C++ Projects in UE4. This guide shows
-                                        you
-                                        how
-                                        to create a new Unreal Engine project, add a new C++ class to it,
-                                        compile
-                                        the project, and add an instance of a new class to your level. By
-                                        the
-                                        time
-                                        you reach the end of this guide, you`ll be able to see your
-                                        programmed
-                                        Actor
-                                        floating above a table in the level. </p>
+                                    <p>  <%=course.coursefaq[i].Answer%> </p>
                                 </div>
                             </li>
-                            <li class="bg-gray-100 px-4 py-3 rounded-md">
+                            <!-- <li class="bg-gray-100 px-4 py-3 rounded-md">
                                 <a class="uk-accordion-title font-semibold text-base" href="#"> Your First webpage</a>
                                 <div class="uk-accordion-content mt-3">
                                     <p> The primary goal of this quick start guide is to introduce you to
@@ -296,7 +281,8 @@
                                         Actor
                                         floating above a table in the level. </p>
                                 </div>
-                            </li>
+                            </li> -->
+                            <%}%>
                         </ul>
     
                     </div>
@@ -305,28 +291,17 @@
                     <div id="announcement" class="tube-card p-5 lg:p-8">
                         <h3 class="text-xl font-semibold lg:mb-5"> Announcement </h3> 
                         <div class="flex items-center gap-x-4 mb-5">
-                            <img src="/assets/images/avatars/avatar-4.jpg" alt="" class="rounded-full shadow w-12 h-12">
+                            <img src="<%=course.tutor_img%>" alt="" class="rounded-full shadow w-12 h-12">
                             <div>
-                                <h4 class="-mb-1 text-base"> Stella Johnson</h4>
+                                <h4 class="-mb-1 text-base"> <%=course.tutor_name%></h4>
                                 <span class="text-sm"> Instructor <span class="text-gray-500"> 1 year ago </span> </span>
                             </div>
                         </div>
         
-                        <h4 class="leading-8 text-xl"> Nam liber tempor cum soluta nobis eleifend option congue imperdiet
-                            doming id quod mazim placerat facer possim assum.</h4>
-                        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-                            non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        <p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
-                            tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis
-                            nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Nam
-                            liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim
-                            placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-                            nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad
-                            minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea
-                            commodo consequat.</p>
+                        <!-- <h4 class="leading-8 text-xl"> Nam liber tempor cum soluta nobis eleifend option congue imperdiet
+                            doming id quod mazim placerat facer possim assum.</h4> -->
+                        <p> <%=course.author_des%></p>
+                    
     
                     </div>
                      
@@ -551,12 +526,12 @@
     
                             <div class="grid grid-cols-2 gap-4">
                                 <div class="flex flex-col space-y-2">
-                                    <div class="text-3xl font-semibold"> 3.2 </div>
+                                    <div class="text-3xl font-semibold"> <%=course.course_data.total_hours%> </div>
                                     <div> Hours </div>
                                     <ion-icon name="time" class="text-lg" hidden></ion-icon>
                                 </div>
                                 <div class="flex flex-col space-y-2">
-                                    <div class="text-3xl font-semibold"> 12,140</div>
+                                    <div class="text-3xl font-semibold"><%=course.course_data.enrolled_students%></div>
                                     <div> Students </div>
                                     <ion-icon name="people-circle" class="text-lg" hidden></ion-icon>
                                 </div>
@@ -565,9 +540,9 @@
                             <h4 hidden> COURSE INCLUDES</h4>
     
                             <div class="-m-5 divide-y divide-gray-200 text-sm">
-                                <div class="flex items-center px-5 py-3">  <ion-icon name="play-outline" class="text-2xl mr-2"></ion-icon> 13 hours on-demand video </div>
+                                <div class="flex items-center px-5 py-3">  <ion-icon name="play-outline" class="text-2xl mr-2"></ion-icon><%=course.course_data.total_hours%> hours on-demand video </div>
                                 <div class="flex items-center px-5 py-3">  <ion-icon name="key-outline" class="text-2xl mr-2"></ion-icon> Full lifetime access </div>
-                                <div class="flex items-center px-5 py-3">  <ion-icon name="download-outline" class="text-2xl mr-2"></ion-icon> 42 downloadable resources </div>
+                                <div class="flex items-center px-5 py-3">  <ion-icon name="download-outline" class="text-2xl mr-2"></ion-icon> <%=course.course_data.no_of_videos%> downloadable resources </div>
                                 <div class="flex items-center px-5 py-3">  <ion-icon name="help-circle-outline" class="text-2xl mr-2"></ion-icon>Assignments </div>
                                 <div class="flex items-center px-5 py-3">  <ion-icon name="medal-outline" class="text-2xl mr-2"></ion-icon>Certificate of Completion </div>
                             </div>
@@ -585,18 +560,20 @@
                             <div>
                                 <h4 class="text-lg -mb-0.5 font-semibold"> Related  Courses </h4>
                             </div>
-                            <a href="#" class="text-blue-600"> <ion-icon name="refresh" class="-mt-0.5 -mr-2 hover:bg-gray-100 p-1.5 rounded-full text-lg"></ion-icon> </a>
+                            <!-- <a href="#" class="text-blue-600"> <ion-icon name="refresh" class="-mt-0.5 -mr-2 hover:bg-gray-100 p-1.5 rounded-full text-lg"></ion-icon> </a> -->
                         </div>
                         <div class="p-1">
-                            <a href="#" class="-mx-3 block hover:bg-gray-100 p-2 rounded-md">
+                    <%for(let i=0;i<course.related_courses.length;i++){%>
+                            <a href="/course/<%=course.related_courses[i]._id%>" class="-mx-3 block hover:bg-gray-100 p-2 rounded-md">
                                 <div class="flex items-center space-x-3">
-                                    <img src="/assets/images/courses/img-2.jpg" alt="" class="h-12 object-cover rounded-md w-12">
+                                    <img src="<%=course.related_courses[i].course_img%>" alt="" class="h-12 object-cover rounded-md w-12">
                                     <div class="line-clamp-2 text-sm font-medium">
-                                        The Complete JavaScript From beginning to Experts for advance
+                                        <%=course.related_courses[i].course_name%>
                                     </div>
                                 </div>
                             </a>
-                            <a href="#" class="-mx-3 block hover:bg-gray-100 p-2 rounded-md">
+                            <%}%>
+                            <!-- <a href="#" class="-mx-3 block hover:bg-gray-100 p-2 rounded-md">
                                 <div class="flex items-center space-x-3">
                                     <img src="/assets/images/courses/img-4.jpg" alt="" class="h-12 object-cover rounded-md w-12">
                                     <div class="line-clamp-2 text-sm font-medium"> 
@@ -611,11 +588,9 @@
                                         The Complete JavaScript From beginning to Experts for advance
                                     </div>
                                 </div>
-                            </a>
+                            </a> -->
                         </div>
-                        <a href="#" class="hover:bg-gray-100 -mb-1.5 mt-0.5 h-8 flex items-center justify-center rounded-md text-blue-400 text-sm"> 
-                            See all 
-                        </a>
+                      
                     </div>
 
                 </div>

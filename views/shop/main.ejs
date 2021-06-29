@@ -29,6 +29,132 @@
     <div id="after-master-header"></div>
     <div class="main-content"  style="background-color: #fff;">
         <div data-group="content-blocks">
+
+        <!-- course section-->
+            <!-- <section data-design="clear" class="centered-container section cc-block--posts">
+                <div class="block--posts section">
+                    <div class="loops__header">
+                        <h2 class="form-title will-scrollanim will-scrollanim-children" data-usechildren="1" data-delay="800">
+                            <div data-vawjs-lines="1" data-vawjs-anim="slideup">Blog & Resources</div>
+                        </h2>
+                        <a title="View all" class="acfflex-link " rel="noopener" target="" href="https://www.algoan.com/blog/"> <span>View all</span> </a> </div>
+                    <ul class="loops__list loops__list--slide will-scrollanim will-scrollanim-children" data-usechildren="1" data-delay="200">
+                        <li>
+                            <div class="loop" data-post-type="post">
+                                <div class="loop__container" style="background-image: url(https://www.algoan.com/wp-content/uploads/2021/02/visuel-news-2-1-931x1280.png);">
+                                    <div class="loop__inner">
+                                        <div class="loop-surtitle">
+                                            White papers<span class="sep"> • </span>01.02.2021 </div>
+                                        <h3 class="loop-title">
+                                            <a href="https://www.algoan.com/white-papers/are-you-ready-to-accelerate-the-usage-of-open-banking-credit-decisioning-in-the-lending-industry/">Are you ready to accelerate the usage of Open Banking Credit Decisioning in the Lending Industry?</a>
+                                        </h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="loop" data-post-type="post">
+                                <div class="loop__container" style="background-image: url(https://www.algoan.com/wp-content/uploads/2020/12/mayofi-bmj1vl77zwm-unsplash-640x427.jpg);">
+                                    <div class="loop__inner">
+                                        <div class="loop-surtitle">
+                                            Articles<span class="sep"> • </span>19.11.2020 </div>
+                                        <h3 class="loop-title">
+                                            <a href="https://www.algoan.com/articles/post-1/">Credit Decisioning as a Service: How Does Algoan Leverage Open Banking to Serve the Credit Industry</a>
+                                        </h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="loop" data-post-type="post">
+                                <div class="loop__container" style="background-image: url(https://www.algoan.com/wp-content/uploads/2020/12/adeolu-eletu-unrkg2jh1j0-unsplash-640x424.jpg);">
+                                    <div class="loop__inner">
+                                        <div class="loop-surtitle">
+                                            Articles<span class="sep"> • </span>15.12.2020 </div>
+                                        <h3 class="loop-title">
+                                            <a href="https://www.algoan.com/articles/open-banking-credit-industry/">Open Banking is a Great Opportunity for the Credit Industry in France and Elsewhere</a>
+                                        </h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </section> -->
+            <section data-design="clear" class="centered-container section cc-block--posts" id="courseid">
+                <div class="block--posts section">
+                    <div class="loops__header">
+                        <h2 class="form-title will-scrollanim will-scrollanim-children" data-usechildren="1" data-delay="800"><div data-vawjs-lines="1" data-vawjs-anim="slideup" data-hasscrollanim="1" data-active="1" data-vawjs-ready="1"><span class="vawjs-word-wrapper"><span class="vawjs-word" style="animation-delay: -0.1s;">Hone your </span></span><span class="vawjs-word-wrapper"><span class="vawjs-word" style="animation-delay: -0.1s;"> software skills</span></span><span class="vawjs-word-wrapper"><span class="vawjs-word" style="animation-delay: -0.1s;"> time and again</span></span></div></h2>
+                        
+                            </div>
+        <%for(let i=0;i<category.length;i++){%>
+             <div style="margin-bottom: 20px;">
+             <h2 class="text-xl font-semibold"> <%=category[i].title%> </h2>  
+             </div>     
+                    <ul class="loops__list loops__list--slide will-scrollanim will-scrollanim-children" data-usechildren="1" data-delay="200">
+              <%for(let j=0;j<course.length;j++){%>
+                  <%if(course[j].category.title===category[i].title){%>       
+                    <li data-hasscrollanim="1" data-active="1"><div class="loop" data-post-type="products">
+                        <a href="/course/<%=course[j]._id%>">
+                        <div class="card uk-transition-toggle">
+                            <div class="card-media h-40">
+                                <div class="card-media-overly"></div>
+                                <img src="<%=course[j].course_img%>" alt="" class="" style="background-color: #02466b;">
+                              
+                            </div>
+                            <div class="card-body p-4">
+                                <div class="font-semibold line-clamp-2"><%=course[j].course_name%> </div>
+                                <div class="flex space-x-2 items-center text-sm pt-3">
+                                    <div> <%=course[j].course_data.total_hours%> hours  </div>
+                                    <div> · </div>
+                                    <div><%=course[j].course_data.no_of_videos%> lectures </div>
+                                </div>
+                                <div class="pt-1 flex items-center justify-between">
+                                    <div class="text-sm font-medium" style="color:rgb(207, 5, 46);"> <%=course[j].tutor_name%> </div>
+                                    <div class="text-lg font-semibold"> ₹<%=course[j].price%> </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                </li>
+                <%}%>
+                <%}%>
+              
+                  
+                <!-- <li data-hasscrollanim="1" data-active="1"><div class="loop" data-post-type="products">
+                    <div class="loop__container" style="background-image: url(https://www.algoan.com/wp-content/uploads/2021/03/push_credit-insight.jpg);">
+                    <div class="loop__inner">
+                        <div class="loop-surtitle">
+                            Credit Insights        </div>
+                        <h3 class="loop-title">
+                            <a href="https://www.algoan.com/products/credit-insights/">Transform raw transaction data into meaningful insights for your lending decisions</a>
+                        </h3>
+                    </div>
+                    </div>
+                </div>
+                </li>    
+                <li data-hasscrollanim="1" data-active="1"><div class="loop" data-post-type="products">
+                    <div class="loop__container" style="background-image: url(https://www.algoan.com/wp-content/uploads/2021/03/push_credit-insight.jpg);">
+                    <div class="loop__inner">
+                        <div class="loop-surtitle">
+                            Credit Insights        </div>
+                        <h3 class="loop-title">
+                            <a href="https://www.algoan.com/products/credit-insights/">Transform raw transaction data into meaningful insights for your lending decisions</a>
+                        </h3>
+                    </div>
+                    </div>
+                </div>
+                </li>     -->
+              </ul>
+              <%}%>
+                </div>
+                </section>
+
+
+
+
+
             <!-- <section class="centered-container section cc-block--cta" data-height="full" data-align="right">
                 <div data-jsuplxdir="bottom" data-jsuplxperspective="200" class="has-vanilla-jsuparallax image-wrapper">
                     <div>
@@ -221,184 +347,7 @@
                
             
             
-            <!-- course section-->
-            <!-- <section data-design="clear" class="centered-container section cc-block--posts">
-                <div class="block--posts section">
-                    <div class="loops__header">
-                        <h2 class="form-title will-scrollanim will-scrollanim-children" data-usechildren="1" data-delay="800">
-                            <div data-vawjs-lines="1" data-vawjs-anim="slideup">Blog & Resources</div>
-                        </h2>
-                        <a title="View all" class="acfflex-link " rel="noopener" target="" href="https://www.algoan.com/blog/"> <span>View all</span> </a> </div>
-                    <ul class="loops__list loops__list--slide will-scrollanim will-scrollanim-children" data-usechildren="1" data-delay="200">
-                        <li>
-                            <div class="loop" data-post-type="post">
-                                <div class="loop__container" style="background-image: url(https://www.algoan.com/wp-content/uploads/2021/02/visuel-news-2-1-931x1280.png);">
-                                    <div class="loop__inner">
-                                        <div class="loop-surtitle">
-                                            White papers<span class="sep"> • </span>01.02.2021 </div>
-                                        <h3 class="loop-title">
-                                            <a href="https://www.algoan.com/white-papers/are-you-ready-to-accelerate-the-usage-of-open-banking-credit-decisioning-in-the-lending-industry/">Are you ready to accelerate the usage of Open Banking Credit Decisioning in the Lending Industry?</a>
-                                        </h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="loop" data-post-type="post">
-                                <div class="loop__container" style="background-image: url(https://www.algoan.com/wp-content/uploads/2020/12/mayofi-bmj1vl77zwm-unsplash-640x427.jpg);">
-                                    <div class="loop__inner">
-                                        <div class="loop-surtitle">
-                                            Articles<span class="sep"> • </span>19.11.2020 </div>
-                                        <h3 class="loop-title">
-                                            <a href="https://www.algoan.com/articles/post-1/">Credit Decisioning as a Service: How Does Algoan Leverage Open Banking to Serve the Credit Industry</a>
-                                        </h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="loop" data-post-type="post">
-                                <div class="loop__container" style="background-image: url(https://www.algoan.com/wp-content/uploads/2020/12/adeolu-eletu-unrkg2jh1j0-unsplash-640x424.jpg);">
-                                    <div class="loop__inner">
-                                        <div class="loop-surtitle">
-                                            Articles<span class="sep"> • </span>15.12.2020 </div>
-                                        <h3 class="loop-title">
-                                            <a href="https://www.algoan.com/articles/open-banking-credit-industry/">Open Banking is a Great Opportunity for the Credit Industry in France and Elsewhere</a>
-                                        </h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </section> -->
-            <section data-design="clear" class="centered-container section cc-block--posts" id="courseid">
-                <div class="block--posts section">
-                    <div class="loops__header">
-                        <h2 class="form-title will-scrollanim will-scrollanim-children" data-usechildren="1" data-delay="800"><div data-vawjs-lines="1" data-vawjs-anim="slideup" data-hasscrollanim="1" data-active="1" data-vawjs-ready="1"><span class="vawjs-word-wrapper"><span class="vawjs-word" style="animation-delay: -0.1s;">Our</span></span><span class="vawjs-word-wrapper"><span class="vawjs-word" style="animation-delay: -0.1s;">other</span></span><span class="vawjs-word-wrapper"><span class="vawjs-word" style="animation-delay: -0.1s;">products</span></span></div></h2>
-                            </div>
-                    <ul class="loops__list loops__list--slide will-scrollanim will-scrollanim-children" data-usechildren="1" data-delay="200">
-                    <li data-hasscrollanim="1" data-active="1"><div class="loop" data-post-type="products">
-                        <a href="/course">
-                        <div class="card uk-transition-toggle">
-                            <div class="card-media h-40">
-                                <div class="card-media-overly"></div>
-                                <img src="/assets/images/courses/img-1.jpg" alt="" class="">
-                              
-                            </div>
-                            <div class="card-body p-4">
-                                <div class="font-semibold line-clamp-2"> Learn JavaScript and Express to become a professional JavaScript developer. </div>
-                                <div class="flex space-x-2 items-center text-sm pt-3">
-                                    <div> 13 hours  </div>
-                                    <div> · </div>
-                                    <div> 32 lectures </div>
-                                </div>
-                                <div class="pt-1 flex items-center justify-between">
-                                    <div class="text-sm font-medium"> John Michael </div>
-                                    <div class="text-lg font-semibold"> $14.99 </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                </li>
-                <li data-hasscrollanim="1" data-active="1"><div class="loop" data-post-type="products">
-                    <a href="/course">
-                    <div class="card uk-transition-toggle">
-                        <div class="card-media h-40">
-                            <div class="card-media-overly"></div>
-                            <img src="../assets/images/courses/img-2.jpg" alt="" class="">
-                            <!-- <span class="icon-play"></span> -->
-                        </div>
-                        <div class="card-body p-4">
-                            <div class="font-semibold line-clamp-2">Learn Angular Fundamentals From beginning to advance </div>
-                            <div class="flex space-x-2 items-center text-sm pt-3">
-                                <div>  26 hours  </div>
-                                <div>·</div>
-                                <div> 26 lectures </div>
-                            </div>
-                            <div class="pt-1 flex items-center justify-between">
-                                <div class="text-sm font-medium"> Stella Johnson </div>
-                                <div class="text-lg font-semibold"> $18.99  </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                </div>
-                </li>
-                <li data-hasscrollanim="1" data-active="1"><div class="loop" data-post-type="products">
-                    <a href="/course">
-                    <div class="card uk-transition-toggle">
-                        <div class="card-media h-40">
-                            <div class="card-media-overly"></div>
-                            <img src="../assets/images/courses/img-3.jpg" alt="" class="">
-                            <!-- <span class="icon-play"></span> -->
-                        </div>
-                        <div class="card-body p-4">
-                            <div class="font-semibold line-clamp-2">Responsive Web Design Essentials HTML5 CSS3 Bootstrap </div>
-                            <div class="flex space-x-2 items-center text-sm pt-3">
-                                <div>  18 hours  </div>
-                                <div>·</div>
-                                <div> 42 lectures </div>
-                            </div>
-                            <div class="pt-1 flex items-center justify-between">
-                                <div class="text-sm font-medium"> Monroe Parker </div>
-                                <div class="text-lg font-semibold"> $11.99 </div>
-                            </div>
-                        </div>
-                    </div></a>
-                </div>
-                </li>  
-                <li data-hasscrollanim="1" data-active="1"><div class="loop" data-post-type="products">
-                    <div class="card uk-transition-toggle">
-                        <div class="card-media h-40">
-                            <div class="card-media-overly"></div>
-                            <img src="/assets/images/courses/img-1.jpg" alt="" class="">
-                            <span class="icon-play"></span>
-                        </div>
-                        <div class="card-body p-4">
-                            <div class="font-semibold line-clamp-2"> Learn JavaScript and Express to become a professional JavaScript developer. </div>
-                            <div class="flex space-x-2 items-center text-sm pt-3">
-                                <div> 13 hours  </div>
-                                <div> · </div>
-                                <div> 32 lectures </div>
-                            </div>
-                            <div class="pt-1 flex items-center justify-between">
-                                <div class="text-sm font-medium"> John Michael </div>
-                                <div class="text-lg font-semibold"> $14.99 </div>
-                            </div>
-                        </div>
-                    </div>
-            </div>
-            </li>
-                </li>    
-                <!-- <li data-hasscrollanim="1" data-active="1"><div class="loop" data-post-type="products">
-                    <div class="loop__container" style="background-image: url(https://www.algoan.com/wp-content/uploads/2021/03/push_credit-insight.jpg);">
-                    <div class="loop__inner">
-                        <div class="loop-surtitle">
-                            Credit Insights        </div>
-                        <h3 class="loop-title">
-                            <a href="https://www.algoan.com/products/credit-insights/">Transform raw transaction data into meaningful insights for your lending decisions</a>
-                        </h3>
-                    </div>
-                    </div>
-                </div>
-                </li>    
-                <li data-hasscrollanim="1" data-active="1"><div class="loop" data-post-type="products">
-                    <div class="loop__container" style="background-image: url(https://www.algoan.com/wp-content/uploads/2021/03/push_credit-insight.jpg);">
-                    <div class="loop__inner">
-                        <div class="loop-surtitle">
-                            Credit Insights        </div>
-                        <h3 class="loop-title">
-                            <a href="https://www.algoan.com/products/credit-insights/">Transform raw transaction data into meaningful insights for your lending decisions</a>
-                        </h3>
-                    </div>
-                    </div>
-                </div>
-                </li>     -->
-              </ul>
-                </div>
-                </section>
+            
            
             <!-- how it works section-->
             <section class="centered-container cc-block--list" data-mobile-center="1">

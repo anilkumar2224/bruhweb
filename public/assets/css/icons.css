@@ -4,7 +4,8 @@
  */
 @font-face {
   font-family: 'Feather-Icons';
-  src: url("http://demo.foxthemes.net/courseplus-v4.2/assets/fonts/Feather-Icons.ttf?7ncawf") format("truetype"), url("http://demo.foxthemes.net/courseplus-v4.2/assets/fonts/Feather-Icons.woff?7ncawf") format("woff"), url("http://demo.foxthemes.net/courseplus-v4.2/assets/fonts/Feather-Icons.svg?7ncawf#Feather-Icons") format("svg");
+  src: url(/assets/fonts/feathericon.eot?1619189591);
+  src: url("/assets/fonts/feathericon.eot?1619189591#iefix") format("eot"), url(/assets/fonts/feathericon.woff2?1619189591) format("woff2"), url(/assets/fonts/feathericon.woff?1619189591) format("woff"), url(/assets/fonts/feathericon.ttf?1619189591) format("truetype"), url("/assets/fonts/feathericon.svg?1619189591#icons") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -1089,7 +1090,7 @@
 
 @font-face {
   font-family: 'Brand-Icons';
-  src: url("http://demo.foxthemes.net/courseplus-v4.2/assets/fonts/Brand-Icons.ttf?blcw31") format("truetype"), url("http://demo.foxthemes.net/courseplus-v4.2/assets/fonts/Brand-Icons.woff?blcw31") format("woff"), url("http://demo.foxthemes.net/courseplus-v4.2/assets/fonts/Brand-Icons.svg?blcw31#Brand-Icons") format("svg");
+  src: url("/assets/fonts/Brand-Icons.ttf?blcw31") format("truetype"), url("/assets/fonts/Brand-Icons.woff?blcw31") format("woff"), url("/assets/fonts/Brand-Icons.svg?blcw31#Brand-Icons") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -2557,12 +2558,12 @@
 }
 
 /*!
- * Material Icons (https://material.io/tools/icons/)
+ * Material Icons (https://material.io/tools/)
  * Apache license version 2.0
  */
 @font-face {
   font-family: 'Material-Icons';
-  src: url("http://demo.foxthemes.net/courseplus-v4.2/assets/fonts/Material-Icons.ttf?e8u1sb") format("truetype"), url("http://demo.foxthemes.net/courseplus-v4.2/assets/fonts/Material-Icons.woff?e8u1sb") format("woff"), url("http://demo.foxthemes.net/courseplus-v4.2/assets/fonts/Material-Icons.svg?e8u1sb#Material-Icons") format("svg");
+  src: url("/assets/fonts/Material-Icons.ttf?e8u1sb") format("truetype"), url("/assets/fonts/Material-Icons.woff?e8u1sb") format("woff"), url("/assets/fonts/Material-Icons.svg?e8u1sb#Material-Icons") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -3191,8 +3192,8 @@
 
 @font-face {
   font-family: 'unicons';
-  src: url("http://demo.foxthemes.net/courseplus-v4.2/assets/fonts/unicons.eot");
-  src: url("http://demo.foxthemes.net/courseplus-v4.2/assets/fonts/unicons.eot") format("embedded-opentype"), url("http://demo.foxthemes.net/courseplus-v4.2/assets/fonts/unicons.woff") format("woff"), url("http://demo.foxthemes.net/courseplus-v4.2/assets/fonts/unicons.ttf") format("truetype"), url("http://demo.foxthemes.net/courseplus-v4.2/assets/fonts/unicons.svg") format("svg");
+  src: url("/assets/fonts/unicons.eot");
+  src: url("/assets/fonts/unicons.eot") format("embedded-opentype"), url("/assets/fonts/unicons.woff") format("woff"), url("/assets/fonts/unicons.ttf") format("truetype"), url("/assets/fonts/unicons.svg") format("svg");
   font-weight: normal;
   font-style: normal;
 }

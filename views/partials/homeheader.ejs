@@ -28,13 +28,14 @@
   <meta name="viewport" content="width=device-width" />
       <!-- icons
     ================================================== -->
-    <link rel="stylesheet" href="/assets/css/icons.css">
+    <!-- <link rel="stylesheet" href="/assets/css/icons.css"> -->
 
     <!-- CSS
     ================================================== -->
-    <link rel="stylesheet" href="/assets/css/uikit.css">
+    <link rel="stylesheet" href="/assets/css/uikit.min.css">
     <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="stylesheet" href="/assets/css/tailwind.css">
+
   <style>
       * {
   font-family: "Nunito", sans-serif;
@@ -124,7 +125,7 @@
         <div class="left-side">
 
             <!-- Logo -->
-            <div id="logo">
+            <div id="logo" class="navlogo">
                 <a href="home.html">
                     <img src="https://tutedude.com/images/Tutedude.png" alt="">
                     <img src="https://tutedude.com/images/Tutedude.png" class="logo_inverse" alt="">
@@ -134,53 +135,33 @@
 
             <!-- icon menu for mobile -->
             <div class="triger" uk-toggle="target: .header_menu ; cls: is-visible">
+                <i class="fa fa-bars" style="font-size: 20px;"></i>
             </div>
 
             <!-- menu bar for mobile -->
             <nav class="header_menu">
+               
                 <ul> 
+                    <li>
+                        <div id="logo">
+                            <a href="home.html">
+                                <img src="https://tutedude.com/images/Tutedude.png" alt="">
+                                <img src="https://tutedude.com/images/Tutedude.png" class="logo_inverse" alt="">
+                                <img src="https://tutedude.com/images/Tutedude.png" class="logo_mobile" alt="" height="175" width="75">
+                            </a>
+                        </div>
+                    <div class="triger" uk-toggle="target: .header_menu ; cls:is-visible" style="float: right;">
+                        <i class="fa fa-close" style="font-size: 20px;"></i>
+                    </div></li>
+                    <li> <a href="/" class="active"> Home  </a></li>
                     <li> 
-                        <a href="#"> Courses<i class="fa fa-caret-down"></i></a> 
-                        <div uk-drop="mode: click" class="mdropdown">
-                            <ul>
-                                <li> <a href="courses.html">  <ion-icon name="newspaper-outline" class="is-icon"></ion-icon> Web Development </a></li>
-                                <li> <a href="courses.html">  <ion-icon name="leaf-outline" class="is-icon"></ion-icon> Mobile App </a> </li>
-                                <li> <a href="courses.html">  <ion-icon name="briefcase-outline" class="is-icon"></ion-icon> Business </a> </li>
-                                <li> <a href="courses.html">  <ion-icon name="color-palette-outline" class="is-icon"></ion-icon> Desings </a></li>
-                                <li> <a href="courses.html">  <ion-icon name="megaphone-outline" class="is-icon"></ion-icon> Marketing </a></li>
-                                <li> <a href="courses.html">  <ion-icon name="camera-outline" class="is-icon"></ion-icon> Photography </a> </li>
-                                <li> <a href="courses.html">  <ion-icon name="accessibility-outline" class="is-icon"></ion-icon> Life Style </a> </li>
-                            </ul>
-                        </div>
+                        <a href="#"> Courses</a> 
+                              
+                    </li>
+                   <li> <a href="categories.html" >About</a></li>
+                   
+                
                   
-                    </li>
-                   <li> <a href="categories.html" class="active"> Categories </a></li>
-                    <li> <a href="episodes.html"> Episode  </a></li>
-                    <li> <a href="books.html"> Book  </a></li>
-                    <li> <a href="blog.html"> Blog</a></li>
-                    <li> <a href="#">Pages</a>
-                        <div uk-drop="mode: click" class="xdropdown">
-                            <ul>
-                                <li> <a href="pages-pricing.html"> Pricing</a></li>
-                                <li> <a href="pages-faq.html"> Faq </a></li>
-                               <li> <a href="pages-help.html"> Help </a></li>
-                                <li> <a href="pages-terms.html"> Terms </a></li>
-                                <li> <a href="pages-setting.html"> Setting </a></li>
-                                <li> <a href="#"> Development </a>
-                                    <div class="xdropdown" uk-drop="mode: click;pos:right-top;animation: uk-animation-slide-right-small">
-                                        <ul> 
-                                            <li><a href="development-elements.html"> Elements  </a></li>
-                                            <li><a href="development-components.html"> Compounents </a></li>
-                                            <li><a href="development-plugins.html"> Plugins </a></li>
-                                            <li><a href="development-icons.html"> Icons </a></li>
-                                        </ul>
-                                    </div>  
-                                </li>
-                                <li> <a href="course-intro.html"> Course intro 1 </a></li>
-                                <li> <a href="course-intro-2.html"> Course intro 2 </a></li>
-                            </ul>
-                        </div>
-                    </li>
                 </ul>
             </nav>
 
@@ -190,8 +171,8 @@
         </div>
         <div class="right-side">
 
-           
-
+           <%if(login){%>
+      
          
             <!-- messages -->
             <a href="#" class="header_widgets">
@@ -347,7 +328,9 @@
                     </li>
                 </ul>
             </div>
-
+              <%}else{%>
+                <div class="field-cta " ><a class="acfflex-link algoan-button algoan-button--white algoan-button--size-second " rel="noopener" target="" href="#courseid" id="loginbtn"> <span></span>Login/Signup </a></div>
+            <%}%>
         </div>
     </div>
 </header>

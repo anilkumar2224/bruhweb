@@ -5,11 +5,25 @@ const courseSchema = Schema({
     category:{
  type: mongoose.Schema.Types.ObjectId,
    ref: "Category",
+   required:true
+    },
+    price:{
+      type: Number,
+      required: true,
     },
  course_name:{
     type: String,
     required: true,
  },
+ course_img:{
+  type: String,
+  required: true,
+},
+ short_description: {
+  type: String,
+  required: true,
+
+},
     description: {
     type: String,
     required: true,
@@ -25,6 +39,11 @@ const courseSchema = Schema({
     required: true,
    
   },
+  what_you_cover: {
+    type: String,
+    required: true,
+  
+  },
   course_data:{
     total_hours:{
         type: Number,
@@ -34,9 +53,10 @@ const courseSchema = Schema({
     type: Number,
     required: true,
     } ,
-    extra_data:[{
-        type: String,
-    }]
+    no_of_videos:{
+      type: Number,
+      required: true,
+    },
   },
   curriculum: [{
 
@@ -44,29 +64,35 @@ const courseSchema = Schema({
         type: String,
         required: true, 
     },
-    topics:{
-    type: Array,
-    required: true,
-    }
+    content:[{
+      topic_name:{
+        type: String,
+        required: true, 
+      },
+      topic_video_duration:{
+        type: Number,
+        required: true, 
+      }
+    }]
   
   }],
   coursefaq: [{
-    title:{
+    question:{
         type: String,
         required: true, 
     },
-    topics:{
+    Answer:{
     type: String,
     required: true,
     }
    
   }],
 
-    author_name:{
+    tutor_name:{
         type: String,
         required: true, 
     },
-    author_img:{
+    tutor_img:{
         type: String 
     },
     author_des:{
@@ -75,10 +101,11 @@ const courseSchema = Schema({
     },
    
   
-  related_courses:{
-      type:Array,
+  related_courses:[{
+    type:mongoose.Schema.Types.ObjectId,
+    ref:"Course"
 
-  }
+  }]
  
 });
 

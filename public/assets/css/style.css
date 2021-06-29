@@ -5978,6 +5978,7 @@ template {
 
 .sidebar .sidebar_inner {
   padding: 0 12px;
+  overflow-y: scroll;
   height: calc(100% - -30px);
   /*footer links */
 }
@@ -6504,14 +6505,16 @@ template {
     margin-left: -300px;
     padding: 0;
     z-index: 1099;
-    background: transparent;
+    background: white;
+    overflow-y: scroll;
   }
   .sidebar .sidebar_inner {
     width: 300px;
-    background-color: transparent;
+    background-color: white;
     height: 100vh;
     position: relative;
     z-index: 3;
+    overflow-y: scroll;
   }
   .sidebar ul:first-child {
     padding-top: 0 !important;
@@ -6597,9 +6600,9 @@ header .header_inner .left-side .triger {
 }
 
 header .header_inner .left-side .triger::before {
-  font-family: "Feather-Icons";
+  /* font-family: "Feather-Icons"; */
   font-size: 22px;
-  content: '\e98f';
+  /* content: '\e98f'; */
   line-height: 30px;
   top: 50%;
   left: 50%;
@@ -7407,8 +7410,15 @@ header .header_inner,
     border: 0;
   }
 }
-
-@media (max-width: 768px) {
+@media (min-width: 1028px) {
+.navlogo{
+  display: none !important;
+}
+}
+@media (max-width: 1028px) {
+  .navlogo{
+    display: block;
+  }
   header {
     min-height: 60px !important;
     height: auto;
@@ -7470,6 +7480,7 @@ header .header_inner,
   .header_menu li {
     display: block !important;
     margin: 0 !important;
+    border-top: 1px solid rgb(204, 204, 204);
   }
   .header_menu li a {
     display: block !important;
@@ -7502,6 +7513,7 @@ header .header_inner,
     display: block !important;
     position: fixed;
     background: white;
+    color: #02466B;
     width: 50%;
     left: 0;
     top: 0;
