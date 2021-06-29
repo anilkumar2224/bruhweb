@@ -108,9 +108,11 @@
                         <h3 class="mb-4 text-xl font-semibold lg:mb-5"> Course Curriculum </h3>
                         <ul uk-accordion="multiple: true" class="tube-card p-4 divide-y space-y-3">
                 <%for(let i=0;i<course.curriculum.length;i++){%>
+                    <% var x=i+1%>
                     <%if(i==0){%>
+                       
                             <li class="uk-open">
-                                <a class="uk-accordion-title text-md mx-2 font-semibold" href="#">  <div class="mb-1 text-sm font-medium"> Section <%=i%> </div> <%=course.curriculum[i].title%> </a>
+                                <a class="uk-accordion-title text-md mx-2 font-semibold" href="#">  <div class="mb-1 text-sm font-medium"> Section <%=x%> </div> <%=course.curriculum[i].title%> </a>
                                 <div class="uk-accordion-content mt-3 text-base">
         
                                     <ul class="course-curriculum-list font-medium">
@@ -142,7 +144,7 @@
                             </li>
                             <%}else{%>
                           <li class="pt-2">
-                                <a class="uk-accordion-title text-md mx-2 font-semibold" href="#"> <div class="mb-1 text-sm font-medium"> Section  <%=i%></div> <%=course.curriculum[i].title%> </a>
+                                <a class="uk-accordion-title text-md mx-2 font-semibold" href="#"> <div class="mb-1 text-sm font-medium"> Section  <%=x%></div> <%=course.curriculum[i].title%> </a>
                                 <div class="uk-accordion-content mt-3 text-base">
         
                                     <ul class="course-curriculum-list font-medium">
