@@ -65,8 +65,24 @@ const adminBro = new AdminBro({
             isVisible: { list: false, filter: true, show: true, edit: false },
           },
           username: {
-            isTitle: true,
+          
+            isVisible: { list: true, filter: true, show: true, edit: false },
           },
+          password: {
+            isVisible: { list: true, filter: true, show: true, edit: false },
+          },
+          email: {
+            
+            isVisible: { list: true, filter: true, show: true, edit: false },
+          },
+          phone: {
+          
+            isVisible: { list: true, filter: true, show: true, edit: false },
+          },
+          course:{
+            isVisible:{ list: false, filter: false, show: true, edit: false }
+          }
+         
         },
       },
     },

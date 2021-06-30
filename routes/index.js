@@ -22,7 +22,7 @@ router.get("/", async (req, res) => {
    console.log(category);
    let course=[];
    course=await Course.find().populate('category');
-   
+   req.session.mailsend = null;
    console.log(course);
    res.render("shop/main", { 
     course,

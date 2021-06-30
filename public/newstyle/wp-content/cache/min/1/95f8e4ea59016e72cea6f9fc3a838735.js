@@ -5437,13 +5437,17 @@ var wputh_scroll_event = function() {
      document.getElementById('main_header').style.backgroundColor="#fff";
      document.getElementById('main_header').classList.add("giveborder")
      document.getElementById('main_header').style.color="#02466B";
+     if(document.getElementById('loginbtn')!=null){
      document.getElementById('loginbtn').style.border="1px solid #02466B";
+    }
     }else{
         document.getElementById('main_header').style.backgroundColor="transparent";
         document.getElementById('main_header').classList.remove("giveborder")
         document.getElementById('main_header').style.color="#fff";
+        if(document.getElementById('loginbtn')!=null){
         document.getElementById('loginbtn').style.backgroundColor="#fff";
         document.getElementById('loginbtn').style.border="none";
+        }
     }
     if (wputhmenu.checkScrollToTop) {
         if (scrollToTop && scrollTop > wputhmenu.scrollLimit && !wputhmenu.has_floating_menu) {

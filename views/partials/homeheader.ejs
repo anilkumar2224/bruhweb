@@ -268,8 +268,8 @@
                                 <img src="/assets/images/avatars/avatar-2.jpg" alt="">
                             </div>
                             <div class="user_name">
-                                <div> Stella Johnson </div>
-                                <span> @Johnson </span>
+                                <div> @<%=currentUser.username%> </div>
+                                <span> <%=currentUser.email%></span>
                             </div>
                         </a>
                     </li>
@@ -285,33 +285,33 @@
                         <hr>
                     </li>
                     <li> 
-                        <a href="page-setting.html">
+                        <a href="/user/profile">
                             <ion-icon name="person-circle-outline" class="is-icon"></ion-icon>
                              My Account 
                         </a>
                     </li>
-                    <li> 
+                    <!-- <li> 
                         <a href="group-feed.html">
                             <ion-icon name="card-outline" class="is-icon"></ion-icon>
                             Subscriptions
                         </a>
-                    </li>
-                    <li> 
+                    </li> -->
+                    <!-- <li> 
                         <a href="group-feed.html">
                             <ion-icon name="color-wand-outline" class="is-icon"></ion-icon>
                             My Billing 
                         </a>
-                    </li>
+                    </li> -->
                     <li>
-                        <a href="group-feed.html">
+                        <a href="/user/resetpassword/<%=currentUser._id%>">
                             <ion-icon name="settings-outline" class="is-icon"></ion-icon>
-                            Account Settings  
+                            Change password  
                         </a>
                     </li>
                     <li> 
                         <hr>
                     </li>
-                    <li> 
+                    <!-- <li> 
                         <a href="#" id="night-mode" class="btn-night-mode" onclick="UIkit.notification({ message: 'Hmm.  <strong> Night mode </strong> feature is not available yet. ' , pos: 'bottom-right'  })">
                             <ion-icon name="moon-outline" class="is-icon"></ion-icon>
                              Night mode
@@ -319,9 +319,9 @@
                                 <span class="uk-switch-button"></span>
                             </span>
                         </a>
-                    </li>
+                    </li> -->
                     <li> 
-                        <a href="group-feed.html">
+                        <a href="/user/logout">
                             <ion-icon name="log-out-outline" class="is-icon"></ion-icon>
                             Log Out 
                         </a>

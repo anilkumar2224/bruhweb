@@ -1,5 +1,5 @@
 <%- include ../partials/homeheader %>
-<style>
+<!-- <style>
   
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 
@@ -102,12 +102,12 @@ input {
 	position: relative;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%,-45%);
 	overflow: hidden;
  
 	width: 768px;
 	max-width: 100%;
-	min-height: 480px;
+	min-height: 590px;
 }
 
 .form-container {
@@ -235,6 +235,10 @@ input {
 	width: 40px;
 }
 
+
+header .header_inner .left-side .triger{
+	color:#02466B ;
+}
 @media (max-width:850px){
   
 
@@ -242,11 +246,11 @@ form {
   padding: 0 20px !important;
 }
 .awrap{
-  height: 900px;
+  height: 950px;
 }
 .acontainer {
   width: 320px;
-  min-height: 700px;
+  min-height: 800px;
   transform: translate(-50%,-50%);
 position: relative;
 }
@@ -259,10 +263,10 @@ position: relative;
   
   }
   .sign-up-container {
-    top: 40%;
+    top: 30%;
     left: 0;
     width: 100%;
-    height: 60%;
+    height: 70%;
     z-index: 1;
     transform: translateX(-100%);
 }
@@ -300,12 +304,14 @@ position: relative;
     height: 40%;
     transform: translate(-50%,0%);
     overflow: hidden;
-    /* transition: transform 0.6s ease-in-out; */
+    transition:  0.6s ease-in-out;
     z-index: 100;
 }
 
 .acontainer.right-panel-active .overlay-container{
   transform: translate(-50%,0%);
+  transition: all 0.6s ease;
+  height: 30%;
 }
 
 .overlay {
@@ -321,11 +327,12 @@ position: relative;
 	height: 100%;
 	width: 200%;
   	transform: translateX(0);
-	/* transition: transform 0.6s ease-in-out; */
+	transition: all 0.6s ease;
 }
 
 .acontainer.right-panel-active .overlay {
   	transform: translateX(0%);
+	  transition: all 0.6s ease;
 }
 
 .overlay-panel {
@@ -340,13 +347,16 @@ position: relative;
 	height: 100%;
 	width: 50%;
 	transform: translateX(0);
-	transition: transform 0.6s ease-in-out;
+	transition: all 0.6s ease;
 }
 
-
+.acontainer.right-panel-active .overlay-panel {
+	  transition: all 0.6s ease;
+}
 
 .acontainer.right-panel-active .overlay-left {
 	transform: translateX(100%);
+	
 }
 
 
@@ -356,8 +366,10 @@ position: relative;
 }
 
 }
-</style>
-
+</style> -->
+<head>
+    <link rel="stylesheet" href="/stylesheets/login.css">
+</head>
       <!-- <div class="fgrid">
     <div class="section-header">
       <h1>Login</h1>
@@ -410,42 +422,48 @@ position: relative;
 </symbol>
   </svg> -->
 <div class="awrap">
+	<% if(errorMsg !=null && errorMsg.length>0) {%>
+		<div id="flash-msg" class="alert alert-danger" style="position:absolute;top: 25%;left: 25%;transform: translate(-50%,-50%);width: fit-content;z-index: 1;"><%=errorMsg %></div>
+		<%}%>
   <div class="acontainer" id="container">
     <div class="form-container sign-up-container">
-      <form action="#">
+      <form action="/user/authform" method="POST">
         <h1 >Create Account</h1>
         <div class="social-container">
-          <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-          <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+      
+          <a href="/user/auth/google" class="social">SignUp with Google</a>
+         
         </div>
         <span>or use your email for registration</span>
-        <input type="text" placeholder="Name" />
-        <input type="email" placeholder="Email" />
-        <input type="password" placeholder="Password" />
-        <button>Sign Up</button>
+        <input type="text" placeholder="Name" name="name" required />
+        <input type="email" placeholder="Email" name="email" required/>
+		<input type="tel" placeholder="Phone Number" name="phone" maxlength="10" pattern="\d{10}" title="Please enter valid Phone number" required/>
+        <input type="password" placeholder="Password" name="password" required />
+		<input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+		<input type="password" placeholder="Verify Password" name="password2" required/>
+        <button >Sign Up</button>
       </form>
     </div>
     <div class="form-container sign-in-container">
-      <form action="#">
+      <form action="/user/signin" method="POST">
         <h1>Sign in</h1>
         <div class="social-container">
-          <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-          <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+          <a href="/user/auth/google" class="social">SignUp with Google</a>
+    
         </div>
         <span>or use your account</span>
-        <input type="email" placeholder="Email" />
-        <input type="password" placeholder="Password" />
-        <a href="#">Forgot your password?</a>
-        <button>Sign In</button>
+        <input type="text" placeholder="Email or Phone number"  name="email" required/>
+        <input type="password" placeholder="Password"  name="password" required />
+		<input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+        <a href="/user/forgotpassword">Forgot your password?</a>
+        <button >Sign In</button>
       </form>
     </div>
     <div class="overlay-container">
       <div class="overlay">
         <div class="overlay-panel overlay-left">
           <h1 style="color: #f6f5f7;">Welcome Back!</h1>
-          <p>To keep connected with us please login with your personal info</p>
+          <p> Keep connected with us </p>
           <button class="ghost" id="signIn">Sign In</button>
         </div>
         <div class="overlay-panel overlay-right">
@@ -457,6 +475,31 @@ position: relative;
     </div>
   </div>
 </div>
-  
+
 
   <%- include ../partials/homefooter %>
+  <script>
+
+      const container = document.getElementById('container');
+      
+      const status="<%=pageName%>";
+      console.log(status)
+      if(status=="SignIn"){
+        container.classList.remove("right-panel-active");
+      }else if(status=="SignUp"){
+        container.classList.add("right-panel-active");
+      }
+// 	document.getElementById('signUp').addEventListener('click',()=>{
+// 		console.log(document.getElementById('flash-msg'))
+// 		if(document.getElementById('flash-msg')!=null)
+// document.getElementById('flash-msg').style.display="none"
+// 	})
+// 	document.getElementById('signIn').addEventListener('click',()=>{
+// 	  console.log(document.getElementById('flash-msg'))
+// 		if(document.getElementById('flash-msg')!=null)
+// document.getElementById('flash-msg').style.display="block"
+// 	})
+
+
+
+</script>
