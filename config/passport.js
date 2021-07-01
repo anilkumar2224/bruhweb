@@ -106,10 +106,13 @@ passport.use(new GoogleStrategy({
         newUser.phone =  profile.phone;
         newUser.profile =  profile._json.picture;
         await newUser.save();
-        return done(null, newUser);
+        console.log(newUser,"from signup")
+        
+        return done(null, newUser,{ message: "Wrong password" });
       }else{
         //if not, create a new user 
-        console.log(user)
+        console.log(user,"from loggedin");
+      
         return done(null, user);
     } 
     

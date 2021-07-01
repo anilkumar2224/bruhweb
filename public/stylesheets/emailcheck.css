@@ -37,7 +37,9 @@ span {
 }
 
 a {
-	color: #333;
+	
+		color:#02466B ;
+	
 	font-size: 14px;
 	text-decoration: none;
 	margin: 15px 0;

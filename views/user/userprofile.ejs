@@ -19,30 +19,22 @@
   <link rel="stylesheet" href="/stylesheets/emailcheck.css">
 </head>
 
-  <!-- Flash messages -->
-      <div class="row mt-3 mb-3">
-        <div class="col-md-8 m-auto">
-          <% if (successMsg) { %>
-          <div id="success" class="alert alert-success">
-            <%= successMsg %>
-          </div>
-          <% } else { %>
-          <div id="success" class="alert alert-success d-none"></div>
-          <% } %>
-        </div>
-        <div class="col-md-8 m-auto">
-          <% if (errorMsg) { %>
-          <div id="error" class="alert alert-danger">
-            <%= errorMsg %>
-          </div>
-          <% } else { %>
-          <div id="error" class="alert alert-danger d-none"></div>
-          <% } %>
-        </div>
-      </div>
+
+ 
   <!-- User's orders -->
 
   <div class="center" >
+      <!-- Flash messages -->
+    <% if (successMsg) { %>
+      <div id="success" class="alert alert-success">
+        <%= successMsg %>
+      </div>
+      <% } %>
+      <% if (errorMsg) { %>
+      <div id="error" class="alert alert-danger">
+        <%= errorMsg %>
+      </div>
+      <% } %>
     <%if(!currentUser.profile){%>
     <img height="100px" width="100px"style="margin:0 auto;" src="https://avatars.githubusercontent.com/u/76587897" />
     <%}else{%>

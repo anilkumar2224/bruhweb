@@ -19,8 +19,10 @@ const {
 const csrfProtection = csrf();
 router.use(csrfProtection);
 router.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email']}));
-router.get('/auth/google/redirect', passport.authenticate('google', { successRedirect: "/user/profile",failureRedirect: "/user/signin",failureFlash: true, }), (req, res) => {
+router.get('/auth/google/redirect', passport.authenticate('google', { successRedirect: "/user/profile",failureRedirect: "/user/signin"}), (req, res) => {
+ 
   if (req.session.oldUrl) {
+  
     var oldUrl = req.session.oldUrl;
     req.session.oldUrl = null;
     res.redirect(oldUrl);
@@ -31,7 +33,7 @@ router.get('/auth/google/redirect', passport.authenticate('google', { successRed
 // GET: display the signup form with csrf token
 router.get("/signup", middleware.isNotLoggedIn, (req, res) => {
   req.session.mailsend=false;
-  console.log(req.session)
+
   var errorMsg = req.flash("error")[0];
   res.render("user/loginpage", {
     csrfToken: req.csrfToken(),
@@ -61,9 +63,9 @@ router.post(
       if (req.session.oldUrl) {
         var oldUrl = req.session.oldUrl;
         req.session.oldUrl = null;
-        res.redirect(oldUrl);
+        res.redirect("/user/profile");
       } else {
-        res.redirect("/");
+        res.redirect("/user/profile");
       }
     } catch (err) {
       console.log(err);
@@ -108,7 +110,7 @@ router.post(
         req.session.oldUrl = null;
         res.redirect(oldUrl);
       } else {
-        res.redirect("/");
+        res.redirect("/user/signin");
       }
     } catch (err) {
       console.log(err);
@@ -120,6 +122,7 @@ router.post(
 
 // GET: display user's profile
 router.get("/profile", middleware.isLoggedIn, async (req, res) => {
+  console.log(req.session)
   const successMsg = req.flash("success")[0];
   const errorMsg = req.flash("error")[0];
   try {

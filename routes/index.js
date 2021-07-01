@@ -58,6 +58,30 @@ router.get("/course/:id", async (req, res) => {
     res.redirect("/");
   }
 });
-
-
+router.get("/about", async (req, res) => {
+  try {
+ 
+   res.render("shop/aboutus", { 
+  
+  });
+  } catch (error) {
+    console.log(error);
+    res.redirect("/");
+  }
+});
+router.get("/courses", async (req, res) => {
+  try {
+    const category=await Category.find();
+    console.log(category);
+    let course=[];
+    course=await Course.find().populate('category');
+   res.render("shop/coursepage", { 
+    course,
+    category
+  });
+  } catch (error) {
+    console.log(error);
+    res.redirect("/");
+  }
+});
 module.exports = router;

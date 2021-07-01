@@ -42,9 +42,12 @@ const validateSignup = (req, res, next) => {
     });
     req.flash("error", messages);
     return res.redirect("/user/signup");
+  }else{
+    req.flash("success", "Account created successfully");
   }
   next();
 };
+
 
 const validateSignin = (req, res, next) => {
   const errors = validationResult(req);
@@ -80,4 +83,5 @@ module.exports = {
   validateSignup,
   validateSignin,
   validateContactUs,
+  
 };

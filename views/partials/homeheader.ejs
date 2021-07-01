@@ -144,7 +144,7 @@
                 <ul> 
                     <li>
                         <div id="logo">
-                            <a href="home.html">
+                            <a href="/">
                                 <img src="https://tutedude.com/images/Tutedude.png" alt="">
                                 <img src="https://tutedude.com/images/Tutedude.png" class="logo_inverse" alt="">
                                 <img src="https://tutedude.com/images/Tutedude.png" class="logo_mobile" alt="" height="175" width="75">
@@ -155,10 +155,10 @@
                     </div></li>
                     <li> <a href="/" class="active"> Home  </a></li>
                     <li> 
-                        <a href="#"> Courses</a> 
+                        <a href="/courses"> Courses</a> 
                               
                     </li>
-                   <li> <a href="categories.html" >About</a></li>
+                   <li> <a href="/about" >About</a></li>
                    
                 
                   
@@ -259,13 +259,20 @@
              <!-- profile -->
             <a href="#">
                 <img src="/assets/images/avatars/placeholder.png" class="header_widgets_avatar" alt="">
+               
             </a>
             <div uk-drop="mode: click;offset:5" class="header_dropdown profile_dropdown">
                 <ul>   
                     <li>
-                        <a href="#" class="user">
+                        <a href="/user/profile" class="user">
+
                             <div class="user_avatar">
-                                <img src="/assets/images/avatars/avatar-2.jpg" alt="">
+                                <%if(!currentUser.profile){%>
+                                    <img  src="https://avatars.githubusercontent.com/u/76587897" />
+                                
+                                <%}else{%>
+                                    <img src="<%=currentUser.profile%>" alt="">
+                                    <%}%>
                             </div>
                             <div class="user_name">
                                 <div> @<%=currentUser.username%> </div>

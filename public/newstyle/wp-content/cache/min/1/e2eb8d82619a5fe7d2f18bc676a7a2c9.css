@@ -5315,6 +5315,13 @@ section.cc-block--forms:first-child {
     box-shadow: 0 10px 34px 0 rgba(6, 13, 22, .19)
 }
 
+
+.foggyback{
+    border-radius: 15px;
+    background-color: #fff;
+    box-shadow: 0 6px 24px 0 rgb(43 76 118 / 12%) !important;
+    transition: all 0.3s ease;
+}
 .minilist-item .img img {
     z-index: 1;
     position: absolute;
