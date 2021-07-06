@@ -4,8 +4,8 @@ const AdminBroMongoose = require("admin-bro-mongoose");
 const mongoose = require("mongoose");
 
 const User = require("../models/user");
-
-
+const CourseVideo = require("../models/coursevideos");
+const Enrolls = require("../models/enrolls");
 const Category = require("../models/category");
 const Course = require("../models/course");
 
@@ -32,8 +32,8 @@ const adminBro = new AdminBro({
         },
         properties: {
          
-          course_name: {
-            isVisible: { list: true, filter: true, show: true, edit: true },
+          title: {
+            isTitle:true ,
           },
           price: {
             isVisible: { list: true, filter: true, show: true, edit: true },
@@ -79,9 +79,7 @@ const adminBro = new AdminBro({
           
             isVisible: { list: true, filter: true, show: true, edit: false },
           },
-          course:{
-            isVisible:{ list: false, filter: false, show: true, edit: false }
-          }
+         
          
         },
       },
@@ -105,6 +103,27 @@ const adminBro = new AdminBro({
           },
           
         },
+      },
+    },
+    {
+      resource: CourseVideo,
+      options: {
+        parent: {
+          name: "Admin Content",
+          icon: "User",
+        },
+      },
+    },
+    {
+      resource: Enrolls,
+      options: {
+        parent: {
+          name: "User Content",
+          icon: "User",
+        },
+        properties: {
+          edit:false
+        }
       },
     },
   ],

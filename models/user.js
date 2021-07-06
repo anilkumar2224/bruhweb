@@ -23,9 +23,18 @@ const userSchema = Schema({
     type: String,
    default:null
   },
-  course:{
-    type: Array,
-  },
+  enrolledcourses:[{
+    course:{
+      type:Schema.Types.ObjectId,
+      ref: "Course",
+      default:null
+    },
+    viewedcontent:{
+      type:Array,
+      default:null
+
+    }
+  }],
 });
 
 // encrypt the password before storing

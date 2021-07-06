@@ -5,7 +5,7 @@ const forgotpasswordmail = require("./forgotpasswordmail");
 const authmail = require("./authmail")
 const url = require("url");
 const fetch = require("node-fetch");
-
+const Course = require ("../models/course")
 const User = require ("../models/user")
 const csrf = require("csurf");
 var passport = require("passport");
@@ -16,6 +16,7 @@ const {
   validateSignup,
   validateSignin,
 } = require("../config/validator");
+const course = require("../models/course");
 const csrfProtection = csrf();
 router.use(csrfProtection);
 router.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email']}));
@@ -125,6 +126,24 @@ router.get("/profile", middleware.isLoggedIn, async (req, res) => {
   console.log(req.session)
   const successMsg = req.flash("success")[0];
   const errorMsg = req.flash("error")[0];
+  console.log(req.user);
+  const courseIds=req.user.enrolledcourses.map(ele=>{
+    return ele.course
+  });
+  const course=await Course.find().where("_id").in(courseIds).exec();
+  const completed=req.user.enrolledcourses.map(ele=>{
+   var sum=0;
+   console.log(ele.viewedcontent);
+   ele.viewedcontent.forEach(e=>{
+     sum=sum+e;
+     console.log(e);
+   })
+   if(sum==0){
+     return 0;
+   }
+   return (sum/ele.viewedcontent.length*100);
+  })
+  console.log(completed);
   try {
     req.session.mailsend = null;
     req.session.num = null;
@@ -133,6 +152,8 @@ router.get("/profile", middleware.isLoggedIn, async (req, res) => {
       successMsg,
       csrfToken: req.csrfToken(),
       pageName: "User Profile",
+      course,
+      completed
     });
   } catch (err) {
     console.log(err);

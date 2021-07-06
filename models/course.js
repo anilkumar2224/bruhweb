@@ -11,7 +11,7 @@ const courseSchema = Schema({
       type: Number,
       required: true,
     },
- course_name:{
+ title:{
     type: String,
     required: true,
  },
