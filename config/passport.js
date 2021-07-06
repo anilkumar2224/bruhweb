@@ -87,7 +87,7 @@ passport.use(
 
 
 passport.use(new GoogleStrategy({
-  callbackURL: `http://localhost:3000/user/auth/google/redirect`,  //same URI as registered in Google console portal
+  callbackURL: process.env.HOST_URL+`/user/auth/google/redirect`,  //same URI as registered in Google console portal
   clientID: process.env.YOUR_CLIENT_ID, //replace with copied value from Google console
   clientSecret: process.env.YOUR_CLIENT_SECRET,
 },

@@ -135,7 +135,7 @@ router.get("/profile", middleware.isLoggedIn, async (req, res) => {
    var sum=0;
    console.log(ele.viewedcontent);
    ele.viewedcontent.forEach(e=>{
-     sum=sum+e;
+     sum=sum+parseInt(e);
      console.log(e);
    })
    if(sum==0){
