@@ -50,6 +50,32 @@ router.get("/", async (req, res) => {
     res.redirect("/");
   }
 });
+
+//about page
+router.get("/about", async (req, res) => {
+  try {
+ 
+   res.render("shop/aboutus", { 
+    });
+  } catch (error) {
+    console.log(error);
+    res.redirect("/");
+  }
+});
+//course page
+router.get("/courses", async (req, res) => {
+  try {
+    const category=await Category.find();
+    const course=await Course.find().populate('category');
+   res.render("shop/coursepage", { 
+     category,
+     course
+    });
+  } catch (error) {
+    console.log(error);
+    res.redirect("/");
+  }
+});
 router.get("/course-view/videos/:id", async (req, res) => {
   try {
    const courseIds=req.user.enrolledcourses.map(ele=>{

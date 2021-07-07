@@ -20,9 +20,9 @@ a{
                 </div>
                             </div>
                 <div>
-             <div class="form-wpulivesearch__wrapper" style="display: block  !important;">
+         
            
-                    <div class="wpulivesearch-filters"  style="margin-bottom: 0;display: block  !important;" data-open="0">
+                    <div class="wpulivesearch-filters"  style="margin-bottom: 0;display: block !important;" >
                                        
                         <a class="view-all" href="#" id="view-alll" style="display: none;">All</a>
                         <div class="wpulivesearch-filter__wrapper" data-key="category"  data-multiple="0">
@@ -47,12 +47,14 @@ a{
                                 </div>
                             </div>
                         </div>
-                        </div>
-
-
+                       
+                    </div>
+                        
 
      
-          </div><div aria-live="polite" id="wpulivesearch_results">
+          
+          
+          <div aria-live="polite" id="wpulivesearch_results">
              <section data-design="clear" class="centered-container section cc-block--posts coursesec" id="courseid8">
                 <div class="block--posts section">
                     <div class="loops__header">
@@ -65,7 +67,7 @@ a{
              </div>     
                     <ul class="loops__list loops__list--slide will-scrollanim will-scrollanim-children" data-usechildren="1" data-delay="200">
               <%for(let j=0;j<course.length;j++){%>
-                  <%if(course[j].category.title===category[i].title){%>       
+                  <%if(course[j].category.title==category[i].title){%>       
                     <li data-hasscrollanim="1" data-active="1"><div class="loop" data-post-type="products">
                         <a href="/course/<%=course[j]._id%>">
                         <div class="card uk-transition-toggle">
@@ -75,7 +77,7 @@ a{
                               
                             </div>
                             <div class="card-body p-4">
-                                <div class="font-bold text-lg line-clamp-2"><%=course[j].course_name%> </div>
+                                <div class="font-bold text-lg line-clamp-2"><%=course[j].title%> </div>
                                 <div class="text-sm font-medium" >· <%=course[j].tutor_name%> </div>
                                 
                                 <div class="pt-1 flex items-center justify-between">
@@ -134,7 +136,7 @@ a{
                      </div>     
                             <ul class="loops__list loops__list--slide will-scrollanim will-scrollanim-children" data-usechildren="1" data-delay="200">
                       <%for(let j=0;j<course.length;j++){%>
-                          <%if(course[j].category.title===category[i].title){%>       
+                          <%if(course[j].category.title==category[i].title){%>       
                             <li data-hasscrollanim="1" data-active="1"><div class="loop" data-post-type="products">
                                 <a href="/course/<%=course[j]._id%>">
                                 <div class="card uk-transition-toggle">

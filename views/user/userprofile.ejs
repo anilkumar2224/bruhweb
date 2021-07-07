@@ -67,7 +67,7 @@
  
   <!-- User's orders -->
 
-  <div class="center" >
+  <div class="center"  style="position: relative;height: fit-content;">
       <!-- Flash messages -->
     <% if (successMsg) { %>
       <div id="success" class="alert alert-success">
@@ -94,7 +94,7 @@
     <br>
     <hr>
     <br>
-    <div style="display: flex;flex-direction: row;flex-wrap: wrap;justify-content: center;">
+    <div style="display: flex;flex-direction: row;flex-wrap: wrap;justify-content: center; ">
       <%if(course.length===0){%>
         <div class="field-cta ">
          <p style="font-weight:600;color: #005a9e;">You haven't enrolled any course</p>
@@ -103,7 +103,7 @@
            <%}else{%>
     <% for(var i=0;i<course.length;i++){%>
 
-        <a href="/course-view/videos/<%=course[i]._id%>">
+        <a href="/course-view/videos/<%=course[i]._id%>" style="margin-left: 20px;">
         <div class="card uk-transition-toggle">
             <div class="card-media h-40">
                 <div class="card-media-overly"></div>
@@ -147,7 +147,7 @@ var id=setTimeout(function(){
     console.log(getWidth)
     for(var i = 0; i < getWidth; i++) {
       console.log(bar)
-      bar.style.width = i + 'px';
+      bar.style.width = i + '%';
       if(i==getWidth){
 clearInterval(id);
 break;

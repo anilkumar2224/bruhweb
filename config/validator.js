@@ -14,8 +14,8 @@ const userSignUpValidationRules = () => {
 
 const userSignInValidationRules = () => {
   return [
-    check("email", "Invalid email").not().isEmpty(),
-    check("password", "Invalid password").not().isEmpty().isLength({ min: 4 }),
+    check("email", "Invalid Email or Phonenumber or password").not().isEmpty(),
+    check("password", "Invalid Email or Phonenumber or password").not().isEmpty().isLength({ min: 4 }),
   ];
 };
 

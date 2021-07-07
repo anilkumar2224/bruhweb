@@ -5585,33 +5585,7 @@ jQuery(document).ready(function() {
     wputhmenu.scrollLimitB = 250;
     wputhmenu.scrollLimit = 350
 });
-jQuery(document).ready(function() {
-    var e = jQuery("body");
 
-    function t() {
-        var e = jQuery('input[name="category"]:checked + label');
-        e.length || (e = jQuery(".wpulivesearch-filters .view-all")), jQuery(".wpulivesearch-filters").attr("data-open", "0"), jQuery(".filters-trigger").text(e.text()), document.getElementById("form_wpulivesearch").style.setProperty("--left", e.position().left + "px"), document.getElementById("form_wpulivesearch").style.setProperty("--width", e.outerWidth() + "px")
-    }
-
-    function r() {
-        window.innerWidth >= 768 && wpulivesearch_pager_clickevent_target()
-    }
-    e.on("click", "#wpulivesearch_results [data-view-all]", function(e) {
-        e.preventDefault();
-        var t = jQuery(this).attr("data-view-all");
-        jQuery("#filter-category" + t).click(), window.scroll(0, 0)
-    }), e.on("click", ".wpulivesearch-filters .view-all", function(e) {
-        e.preventDefault(), jQuery("#wpulivesearch-reset").click(), t()
-    }), e.on("click", ".filters-trigger", function(e) {
-        var t = jQuery(".wpulivesearch-filters"),
-            r = "1" == t.attr("data-open");
-        t.attr("data-open", r ? "0" : "1")
-    }), jQuery(document).click(function(e) {
-        jQuery(e.target).closest(".wpulivesearch-filters").length || jQuery(".wpulivesearch-filters").attr("data-open", "0")
-    }), $_wpulivesearch_results = document.getElementById("wpulivesearch_results"), $_wpulivesearch_results && (t(), r(), $_wpulivesearch_results.addEventListener("wpulivesearch_results", function(e) {
-        t(), r()
-    }, 1), window.addEventListener("resize", wputheme_debounce(t)))
-});
 jQuery(document).ready(function() {
     jQuery("body").on("click", ".loop-question__name", function(e) {
         e.preventDefault(), jQuery(this).parent().toggleClass("is-open")

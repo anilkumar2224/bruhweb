@@ -4613,55 +4613,11 @@ form[data-changed="0"] .wpulivesearch-filters .view-all {
 }
 
 @media (min-width:768px) {
-    .wpulivesearch-filters .filters-trigger {
+    /* .wpulivesearch-filters .filters-trigger {
         display: none
-    }
+    } */
 }
 
-@media (max-width:767px) {
-    .wpulivesearch-filters .floating-background {
-        display: none
-    }
-    .wpulivesearch-filters .wpulivesearch-filter__wrapper,
-    .wpulivesearch-filters .view-all {
-        display: none !important;
-        z-index: 2;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        box-sizing: border-box;
-        width: 100%;
-        margin: 0;
-        padding: 0;
-        text-align: left;
-        font-size: 16px;
-        background-color: #fff
-    }
-    .wpulivesearch-filters .wpulivesearch-filter__wrapper {
-        z-index: 1;
-        top: 120px;
-        height: auto;
-        border-radius: 0 0 9px 9px;
-        box-shadow: 0 6px 24px 0 rgba(43, 76, 118, .17)
-    }
-    .wpulivesearch-filters[data-open="1"] .view-all {
-        padding: 0 24px
-    }
-    .wpulivesearch-filters[data-open="1"] .wpulivesearch-filter__wrapper,
-    .wpulivesearch-filters[data-open="1"] .view-all {
-        display: block !important
-    }
-    .wpulivesearch-filters .view-all,
-    .wpulivesearch-filters .wpulivesearch-filter__wrapper .value label {
-        height: 60px;
-        font-size: 16px !important;
-        line-height: 60px
-    }
-    .wpulivesearch-filters .wpulivesearch-filter__wrapper,
-    .wpulivesearch-filters .wpulivesearch-filter__wrapper .value {
-        display: block
-    }
-}
 
 .wpulivesearch-pager--load-more {
     text-align: center
@@ -5869,7 +5825,7 @@ body[data-inputmode="mouse"] .cc-block--master-header:not([data-inbutton="1"]):h
 }
 
 .block--posts:before {
-    z-index: 1;
+    z-index: -1;
     position: absolute;
     bottom: -.5em;
     left: -.5em;

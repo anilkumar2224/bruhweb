@@ -1378,12 +1378,10 @@ Due to the split circle of progress-left and progress right, we must use the ani
             <!-- back to home link -->
             <div class="flex justify-between lg:-ml-1 mt-1 mr-2">
                 <a href="/" class="flex items-center text-blue-500">
-                    <ion-icon name="chevron-back-outline" class="md:text-lg text-2xl"></ion-icon>  
+                    <i class="fa fa-arrow-left"></i> 
                     <span class="text-sm md:inline hidden"> back</span>
                 </a>
-            </div>
-
-            <!-- title -->
+                 <!-- title -->
             <h1 class="lg:text-2xl text-lg font-bold mt-2 line-clamp-2" style="margin-top:20px ;"> <%=curriculum.course_name.title%> </h1>
             <div class=" p-5">
                 <div class="progress" data-percentage="<%=completed[0]%>">
@@ -1400,6 +1398,9 @@ Due to the split circle of progress-left and progress right, we must use the ani
                     </div>
                 </div>
             </div>
+            </div>
+
+           
  
             <nav class="cd-secondary-nav nav-small extanded w-auto lg:block hidden">
                 <ul uk-switcher="connect: #course-tabs; animation: uk-animation-fade">
@@ -1658,17 +1659,23 @@ Due to the split circle of progress-left and progress right, we must use the ani
   }
     </script>
 
+    <!--Start of Tawk.to Script-->
 <script type="text/javascript">
   var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
   (function(){
   var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
   s1.async=true;
-  s1.src='<%=curriculum.tutor_chat_link%>' ;
+  s1.src='<%=curriculum.tutor_chat_link%>';
   s1.charset='UTF-8';
   s1.setAttribute('crossorigin','*');
   s0.parentNode.insertBefore(s1,s0);
   })();
   </script>
+  <!--End of Tawk.to Script-->
+<!--Start of Tawk.to Script-->
+
+  <!--End of Tawk.to Script-->
+
 
   <!--Start of Tawk.to Script-->
 
