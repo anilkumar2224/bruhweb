@@ -8587,13 +8587,14 @@ header .header_inner,
   width: 40px;
   height: 40px;
   right: -5px;
+  margin-top:25px;
   display: none;
 }
 
 .course-watch .sidebar .btn-close-mobi::before {
   font-family: "Feather-Icons";
   font-size: 22px;
-  content: '\e98f';
+  /* content: '\e98f'; */
   line-height: 30px;
   top: 50%;
   left: 50%;
@@ -8668,20 +8669,24 @@ header .header_inner,
   }
   .course-watch.is-active .sidebar_inner {
     margin-left: 0px;
+    padding-top: 70px;
   }
   .course-watch .btn-close-mobi {
     display: block !important;
   }
   .course-watch.is-active .btn-close-mobi {
     z-index: 6;
-    top: 10px;
-    left: 332px;
+    top: -10px;
+    left: 282px;
     position: fixed !important;
     color: white;
     background: #1438ff;
   }
-  .course-watch.is-active .btn-close-mobi::before {
-    content: '\ea02';
+  .course-watch.is-active .btn-close-mobi .fa-bars:before{ 
+    content: "\f00d";
+    margin-left: 4px;
+ 
+    /* content: '\ea02'; */
   }
 }
 

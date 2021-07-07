@@ -12,9 +12,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Courseplus is - Professional A unique and beautiful collection of UI elements">
+       <!-- Font CSS -->
+   
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,800;0,900;1,700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap CSS -->
 
+    <link rel="stylesheet" type="text/css" href="/css/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css" integrity="sha384-wESLQ85D6gbsF459vf1CiZ2+rr+CsxRY0RpiF1tLlQpDnAgg6rwdsUF1+Ics2bni" crossorigin="anonymous">
     <!-- Favicon -->
- 
+
 
     <!-- icons
     ================================================== -->
@@ -22,7 +31,7 @@
     <link href="https://vjs.zencdn.net/7.11.4/video-js.css" rel="stylesheet" />
     <!-- CSS
     ================================================== -->
-    <link rel="stylesheet" href="/assets/css/uikit.css">
+    <link rel="stylesheet" href="/assets/css/uikit.min.css">
     <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="stylesheet" href="/assets/css/tailwind.css">
 <style>
@@ -1373,16 +1382,16 @@ Due to the split circle of progress-left and progress right, we must use the ani
         <div class="sidebar bg-white">
            
             <!-- slide_menu for mobile -->
-            <span class="btn-close-mobi right-3 left-auto" uk-toggle="target: #wrapper ; cls: is-active"></span>
+            <span class="btn-close-mobi right-3 left-auto " uk-toggle="target: #wrapper ; cls: is-active"><i class="fa fa-bars"></i></span>
 
             <!-- back to home link -->
-            <div class="flex justify-between lg:-ml-1 mt-1 mr-2">
+            <div class="flex justify-between lg:-ml-1 mt-1 mr-2" style="width:100%">
                 <a href="/" class="flex items-center text-blue-500">
                     <i class="fa fa-arrow-left"></i> 
-                    <span class="text-sm md:inline hidden"> back</span>
+                    <!-- <span class="text-sm md:inline hidden"> back</span> -->
                 </a>
                  <!-- title -->
-            <h1 class="lg:text-2xl text-lg font-bold mt-2 line-clamp-2" style="margin-top:20px ;"> <%=curriculum.course_name.title%> </h1>
+            <h1 class="lg:text-2xl text-lg font-bold mt-2 line-clamp-2" style="margin-top:25px ;"> <%=curriculum.course_name.title%> </h1>
             <div class=" p-5">
                 <div class="progress" data-percentage="<%=completed[0]%>">
                     <span class="progress-left">
@@ -1425,7 +1434,7 @@ Due to the split circle of progress-left and progress right, we must use the ani
                                 <% var x=i+1%>
                                 <%if(i==0){%>
                             <div class="pt-2 uk-open">
-                                <a class="uk-accordion-title text-md mx-2 font-semibold" href="#">  <div class="mb-1 text-sm font-medium"> Section <%=x%> </div> <%=curriculum.curriculum[i].title%>  </a>
+                                <a class="uk-accordion-title text-md mx-2 font-semibold " href="#">  <div class="mb-1 text-sm font-medium"> Section <%=x%> </div> <%=curriculum.curriculum[i].title%>  </a>
                                 <div class="uk-accordion-content mt-3">
         
                                     <ul class="course-curriculum-list" uk-switcher="connect: #video_tabs; animation: uk-animation-fade">
