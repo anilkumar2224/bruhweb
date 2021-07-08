@@ -8,7 +8,7 @@ const coursevideoSchema = Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "Course",
       },
-      tutor_chat_link:{
+      tutor_chat_id:{
         type: String,
         required: true, 
     },

@@ -76,7 +76,7 @@ router.get("/courses", async (req, res) => {
     res.redirect("/");
   }
 });
-router.get("/course-view/videos/:id", async (req, res) => {
+router.get("/course-view/:user/:id", async (req, res) => {
   try {
    const courseIds=req.user.enrolledcourses.map(ele=>{
     return ele.course
@@ -162,19 +162,25 @@ router.get("/course/:id", async (req, res) => {
   
   })
 }
+
+
 const product_reviews = await Review.findOne({ courseId: req.params.id });
 let data = [];
 if (product_reviews) {
   data = product_reviews.reviews;
 }
+data=data.reverse();
    const id=req.params.id;
    const course=await Course.find({_id:id}).populate('category').populate('related_courses');
-   console.log(course)
+  //  console.log(course);
+  const students_enrolled=await Enrolls.find({'course.course_name':course[0].title}).count();
+  console.log(students_enrolled);
    res.render("shop/product", { 
     course:course[0],
     csrfToken: req.csrfToken(),
     status,
     reviews: data,
+    students_enrolled
     
   });
   } catch (error) {

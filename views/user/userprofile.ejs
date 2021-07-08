@@ -103,7 +103,7 @@
            <%}else{%>
     <% for(var i=0;i<course.length;i++){%>
 
-        <a href="/course-view/videos/<%=course[i]._id%>" style="margin-left: 20px;">
+        <a href="/course-view/<%=currentUser._id%>/<%=course[i]._id%>" style="margin-left: 20px;">
         <div class="card uk-transition-toggle">
             <div class="card-media h-40">
                 <div class="card-media-overly"></div>

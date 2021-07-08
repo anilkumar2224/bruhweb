@@ -35,7 +35,7 @@
                                 <ion-icon name="star-half"></ion-icon>
                             </div>
                         </li>
-                        <li> <ion-icon name="people-circle-outline"></ion-icon> 1200 Enerolled </li>
+                        <li> <ion-icon name="people-circle-outline"></ion-icon> <%=students_enrolled%> Enerolled </li>
                     </ul>
                     <ul class="lg:flex items-center text-gray-200">
                         <li> Created by <a href="#" class="text-white fond-bold hover:underline hover:text-white"><%=course.tutor_name%> </a> </li>
@@ -494,19 +494,19 @@
                
                                         </div>
 
-                                        <button class="flex items-center justify-center h-9 px-6 rounded-md bg-blue-600 text-white mt-2">
+                                        <button class="flex items-center justify-center h-9 px-6 rounded-md bg-blue-600 text-white mt-2" style="width:30%;">
                                             Submit
                                         </button>
                                     </form>
-                                    <div class="space-y-4 my-5 " style="width: 100%;">
+                                    <div class="space-y-4 my-5 " style="width: 100%;height: 300px;overflow-y:hidden;" id="reviewdiv">
                                         <%if(reviews.length>0){%>
                                       
                                             <% for(var i=0;i<reviews.length;i++){ %>
                                             
                                                       
-                                                  <div class="bg-gray-50 border flex gap-x-4 p-4 relative rounded-md" style="width: 100%;">
+                                                  <div class="bg-gray-50 border flex gap-x-4 p-4 relative rounded-md" style="width: 90%;margin: 10px auto;">
                                                       <img src="../assets/images/avatars/avatar-4.jpg" alt="" class="rounded-full shadow w-12 h-12">
-                                                      <div class="flex justify-center items-center absolute right-5 top-6 space-x-1 text-yellow-500">
+                                                      <div class="flex justify-center items-center absolute right-5 space-x-1 text-yellow-500" style="top:0.5rem;">
                                       <%for(var j=0;j<reviews[i].rating;j++){ %>
                                                           <ion-icon name="star"></ion-icon>
                                                           <%}%>
@@ -546,7 +546,7 @@
                         </div>
     
                         <div class="flex justify-center mt-9">
-                            <a href="#" class="bg-gray-50 border hover:bg-gray-100 px-4 py-1.5 rounded-full text-sm">More Comments </a>
+                            <a  class="bg-gray-50 border hover:bg-gray-100 px-4 py-1.5 rounded-full text-sm" id="morebtn">More Comments </a>
                         </div>
     
                     </div>
@@ -565,7 +565,7 @@
                                     <ion-icon name="time" class="text-lg" hidden></ion-icon>
                                 </div>
                                 <div class="flex flex-col space-y-2">
-                                    <div class="text-3xl font-semibold"><%=course.course_data.enrolled_students%></div>
+                                    <div class="text-3xl font-semibold"><%=students_enrolled%></div>
                                     <div> Students </div>
                                     <ion-icon name="people-circle" class="text-lg" hidden></ion-icon>
                                 </div>
@@ -584,7 +584,7 @@
                         </div>
                         <%if(status){%>
                             <div class="mt-4 " >
-                               <a href="/course-view/videos/<%=course._id%>"> <button type="submit" class="flex items-center justify-center h-9 px-6 rounded-md bg-blue-600 text-white" style="margin: 0 auto;width: 100%;">
+                               <a href="/course-view/<%=currentUser._id%>/<%=course._id%>"> <button type="submit" class="flex items-center justify-center h-9 px-6 rounded-md bg-blue-600 text-white" style="margin: 0 auto;width: 100%;">
 
                                     View Course
                                 </button></a>
@@ -599,7 +599,7 @@
                           <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
 
                             <div class="mt-4">
-                                <button type="submit" class="flex items-center justify-center h-9 px-6 rounded-md bg-blue-600 text-white">
+                                <button type="submit" class="flex items-center justify-center h-9 px-6 rounded-md bg-blue-600 text-white" style="width: 100%;">
 
                                     Enroll Now 
                                 </button>
@@ -723,7 +723,7 @@
             }
         })
         if(js.data!=null){
-          const newreview=` <div class="bg-gray-50 border flex gap-x-4 p-4 relative rounded-md" style="width: 100%;">
+          const newreview=` <div class="bg-gray-50 border flex gap-x-4 p-4 relative rounded-md" style="width: 90%;margin: 10px auto;">
                 <img src="../assets/images/avatars/avatar-4.jpg" alt="" class="rounded-full shadow w-12 h-12">
                 <div class="flex justify-center items-center absolute right-5 top-6 space-x-1 text-yellow-500"> ${ Array(js.reviews.rating).fill().map(e=>`<ion-icon name="star"></ion-icon>`).join('')}
                      ${ Array(5-js.reviews.rating).fill().map(e=>`<ion-icon name="star" style="color: #666666;"></ion-icon>`).join('')}           
@@ -739,9 +739,9 @@
 `;
            var parser = new DOMParser();
             var doc = parser.parseFromString(newreview, 'text/html');
-        var last=document.getElementById('cmform');
-        last.parentNode.insertBefore(doc.body.firstChild,last.nextSibling);
-        
+        var last=document.getElementById('reviewdiv');
+        // last.parentNode.insertBefore(doc.body.firstChild,last.nextSibling);
+        last.prepend(doc.body.firstChild);
               } else{
                   document.getElementById('flash-msg').classList.remove('dis-none');
                   document.getElementById('flash-msg').style.display='block'
@@ -774,7 +774,17 @@
          
               }
         
-        
+        document.getElementById('morebtn').addEventListener('click',e=>{
+         if(document.getElementById('morebtn').innerText=='More Comments'){
+             document.getElementById('reviewdiv').style.overflowY='auto';
+             document.getElementById('reviewdiv').style.height='fit-content';
+             document.getElementById('morebtn').innerText='Show less comments';
+         }else{
+            document.getElementById('reviewdiv').style.overflowY='hidden';
+             document.getElementById('reviewdiv').style.height='300px';
+             document.getElementById('morebtn').innerText='More Comments'; 
+         }
+        })
         
             </script>
     <%- include ../partials/homefooter %>

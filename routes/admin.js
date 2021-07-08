@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 const User = require("../models/user");
 const CourseVideo = require("../models/coursevideos");
 const Enrolls = require("../models/enrolls");
+const Reviews = require("../models/reviews");
 const Category = require("../models/category");
 const Course = require("../models/course");
 
@@ -101,6 +102,24 @@ const adminBro = new AdminBro({
           title: {
             isTitle: true,
           },
+          
+        },
+      },
+    },
+    {
+      resource: Reviews,
+      options: {
+        parent: {
+          name: "Admin Content",
+          icon: "User",
+        },
+        properties: {
+         
+          courseId: {
+            isVisible: { list: false, filter: false, show: false, edit: false },
+          }
+          
+         
           
         },
       },
